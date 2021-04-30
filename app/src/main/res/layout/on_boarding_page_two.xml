@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/on_boarding_page_two_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_350dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/on_boarding_image_page_two"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/on_boarding_page_two_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimens_5dp"
+            android:gravity="center"
+            android:text="@string/how_does_it_work"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/green"
+            android:textSize="@dimen/dimens_18sp" />
+
+        <TextView
+            android:id="@+id/on_boarding_page_two_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/dimens_20dp"
+            android:layout_marginTop="@dimen/dimens_17dp"
+            android:layout_marginEnd="@dimen/dimens_20dp"
+            android:layout_marginBottom="@dimen/dimens_24dp"
+            android:gravity="center"
+            android:text="@string/jumys_text" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

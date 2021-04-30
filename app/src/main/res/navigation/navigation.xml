@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/onBoardingFragment">
+
+    <fragment
+        android:id="@+id/roleFragment"
+        android:name="kz.smartideagroup.jumys.RoleFragment"
+        android:label="RoleFragment"
+        tools:layout="@layout/fragment_role">
+        <action
+            android:id="@+id/action_roleFragment_to_homeManagerFragment"
+            app:destination="@id/homeManagerFragment" />
+        <action
+            android:id="@+id/action_roleFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_roleFragment_to_homeClientFragment"
+            app:destination="@id/homeClientFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeManagerFragment"
+        android:name="kz.smartideagroup.jumys.manager.view.home.HomeManagerFragment"
+        android:label="HomeManagerFragment"
+        tools:layout="@layout/fragment_home_manager" />
+    <fragment
+        android:id="@+id/claimManagerFragment"
+        android:name="kz.smartideagroup.jumys.manager.view.claim.ClaimManagerFragment"
+        android:label="ClaimManagerFragment"
+        tools:layout="@layout/fragment_claim_manager" />
+    <fragment
+        android:id="@+id/profileManagerFragment"
+        android:name="kz.smartideagroup.jumys.manager.view.profile.ProfileManagerFragment"
+        android:label="ProfileManagerFragment"
+        tools:layout="@layout/fragment_profile_manager" />
+
+    <fragment
+        android:id="@+id/supportManagerFragment"
+        android:name="kz.smartideagroup.jumys.manager.view.support.SupportManagerFragment"
+        android:label="SupportManagerFragment"
+        tools:layout="@layout/fragment_support_manager" />
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="kz.smartideagroup.jumys.authorization.view.SignInFragment"
+        android:label="SignInFragment"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signInFragment_to_smsCodeFragment"
+            app:destination="@id/smsCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/smsCodeFragment"
+        android:name="kz.smartideagroup.jumys.authorization.view.SmsCodeFragment"
+        android:label="SmsCodeFragment"
+        tools:layout="@layout/fragment_sms_code">
+        <action
+            android:id="@+id/action_smsCodeFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="kz.smartideagroup.jumys.authorization.view.RegistrationFragment"
+        android:label="RegistrationFragment"
+        tools:layout="@layout/fragment_registration" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="kz.smartideagroup.jumys.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_roleFragment"
+            app:destination="@id/roleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="kz.smartideagroup.jumys.on_boarding.OnBoardingFragment"
+        android:label="OnBoardingFragment"
+        tools:layout="@layout/fragment_on_boarding">
+        <action
+            android:id="@+id/action_onBoardingFragment_to_roleFragment"
+            app:destination="@id/roleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="kz.smartideagroup.jumys.manager.view.apply_claim.CameraFragment"
+        android:label="CameraFragment"
+        tools:layout="@layout/fragment_camera" />
+    <fragment
+        android:id="@+id/homeClientFragment"
+        android:name="kz.smartideagroup.jumys.client.view.home.HomeClientFragment"
+        android:label="HomeClientFragment"
+        tools:layout="@layout/fragment_home_client" />
+    <fragment
+        android:id="@+id/claimClientFragment"
+        android:name="kz.smartideagroup.jumys.client.view.claim.ClaimClientFragment"
+        android:label="ClaimClientFragment"
+        tools:layout="@layout/fragment_claim_client" />
+    <fragment
+        android:id="@+id/mapClientFragment"
+        android:name="kz.smartideagroup.jumys.client.view.apply_claim.MapClientFragment"
+        android:label="MapClientFragment"
+        tools:layout="@layout/fragment_map_client" />
+    <fragment
+        android:id="@+id/profileClientFragment"
+        android:name="kz.smartideagroup.jumys.client.view.profile.ProfileClientFragment"
+        android:label="ProfileClientFragment"
+        tools:layout="@layout/fragment_profile_client" />
+    <fragment
+        android:id="@+id/supportClientFragment"
+        android:name="kz.smartideagroup.jumys.client.view.support.SupportClientFragment"
+        android:label="SupportClientFragment"
+        tools:layout="@layout/fragment_support_client" />
+
+</navigation>

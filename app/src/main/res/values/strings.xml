@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Jumys</string>
+    <string name="customer">Заказчик</string>
+
+
+    <string name="home">Главная</string>
+    <string name="claim">Заявки</string>
+    <string name="to_order">Новые заказы</string>
+    <string name="support">Поддержка</string>
+    <string name="profile">Профиль</string>
+
+    //Content
+    <string name="support_text">Служба поддержки</string>
+
+
+    //Role
+    <string name="i_want_to_find_a_specialist_for_the_execution_of_works">Хочу найти специалиста для выролнение работ</string>
+    <string name="specialist">Специалист</string>
+    <string name="find_a_job_and_earn_money">Найти работу и заработать деньги</string>
+    <string name="enter_your_phone_number">Введите номер телефона</string>
+    <string name="by_clicking_next_you_agree_to">Нажимая “Далее”, вы соглашаетесь с</string>
+    <string name="service_rules">правилами сервиса</string>
+    <string name="mask_phone">+7 (</string>
+    <string name="next">Далее</string>
+    <string name="confirm_finish">Нажмите ещё раз для выхода</string>
+    <string name="skip_registration">Пропустить регистрацию</string>
+    <string name="enter_the_code_from_sms">Введите код из СМС</string>
+    <string name="send_sms_number">Отправлен на номер загрузка…</string>
+    <string name="you_can_send_the_code_again_via">Отправить код повторно можно через: загрузка…</string>
+    <string name="contact_details">Контактные данные</string>
+    <string name="please_enter_a_name_to_continue">Чтобы продолжить, укажите имя</string>
+    <string name="what_is_your_name">Как вас зовут?</string>
+    <string name="enter_your_name">Введите имя</string>
+    <string name="email">Электронная почта</string>
+    <string name="enter_your_email">Введите email</string>
+    <string name="for_what">Для чего?</string>
+    <string name="jumys_text">«Jumys - простое решение для непростых задач! Бесплатная площадка для поиска специалистов. Мы поможем быстро найти лучших специалистов. Широкий выбор услуг по разным квалификациям всегда в Вашем смартфоне!»</string>
+    <string name="how_does_it_work">Как работает Jumys.kz?</string>
+    <string name="further">Далее</string>
+    <string name="dialog_exit">Выйти</string>
+
+
+    //Обработка ошибки
+    <string name="error_no_internet_title">Отсутствует интернет соединение</string>
+    <string name="error_unknown_body">Пожалуйста проверьте интернет соединени или попробуйте позднее</string>
+    <string name="error_no_internet_msg">Пожалуйста проверьте ваше интернет соединение и попробуйте ещё раз</string>
+    <string name="apply">Подать заявку</string>
+    <string name="recommended_specialists">Рекомендованные специалисты</string>
+    <string name="popular_questions">Популярные вопросы</string>
+    <string name="advice">Советы</string>
+    <string name="loading">Загрузка...</string>
+    <string name="payment_amount">Сумма оплаты:</string>
+    <string name="zero">0,0</string>
+    <string name="back">Назад</string>
+    <string name="write">Написать...</string>
+    <string name="settings">Настройки</string>
+    <string name="username">Имя пользователя</string>
+    <string name="phone">Телефон</string>
+    <string name="city">Город</string>
+    <string name="favorite">Избранные</string>
+    <string name="feedback">Обратная связь</string>
+    <string name="contact_technical_support">Написать в техподдержку</string>
+    <string name="request_a_call">Заказать звонок</string>
+    <string name="complaints_and_suggestions">Жалобы и предложения</string>
+    <string name="login_as_a_specialist">Войти как специалист</string>
+    <string name="sign_out_of_your_account">Выйти из аккаунта</string>
+
+</resources>

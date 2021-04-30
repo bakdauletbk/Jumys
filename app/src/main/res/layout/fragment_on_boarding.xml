@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimens_30dp"
+        android:layout_marginEnd="@dimen/dimens_15dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/on_boarding_fragment_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_0dp"
+        android:layout_marginBottom="@dimen/dimens_8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/on_boarding_fragment_skip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_close" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/on_boarding_fragment_skip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimens_30dp"
+        android:layout_marginEnd="@dimen/dimens_30dp"
+        android:layout_marginBottom="@dimen/dimens_25dp"
+        android:backgroundTint="@color/green"
+        android:paddingVertical="@dimen/dimens_15dp"
+        android:text="@string/further"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dimens_16sp"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/dimens_15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

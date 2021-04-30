@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_role">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+
+        <LinearLayout
+            android:id="@+id/ll_customer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_120dp"
+            android:layout_marginStart="@dimen/dimens_25dp"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:layout_marginEnd="@dimen/dimens_25dp"
+            android:background="@drawable/shape_white_corners_fifteen"
+            android:elevation="@dimen/dimens_3dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <ImageView
+                android:layout_width="@dimen/dimens_0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:src="@drawable/with_phone"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:layout_width="@dimen/dimens_0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_25dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/customer"
+                    android:textColor="@color/green"
+                    android:textSize="@dimen/dimens_18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimens_20dp"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:layout_marginEnd="@dimen/dimens_20dp"
+                    android:gravity="center"
+                    android:text="@string/i_want_to_find_a_specialist_for_the_execution_of_works"
+                    android:textColor="@color/gray" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_specialist"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_120dp"
+            android:layout_marginStart="@dimen/dimens_25dp"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:layout_marginEnd="@dimen/dimens_25dp"
+            android:layout_marginBottom="@dimen/dimens_10dp"
+            android:background="@drawable/shape_white_corners_fifteen"
+            android:elevation="@dimen/dimens_3dp">
+
+            <ImageView
+                android:layout_width="@dimen/dimens_0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:src="@drawable/icon_women_rocket"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:layout_width="@dimen/dimens_0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_25dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/specialist"
+                    android:textColor="@color/green"
+                    android:textSize="@dimen/dimens_18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimens_20dp"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:layout_marginEnd="@dimen/dimens_20dp"
+                    android:gravity="center"
+                    android:text="@string/find_a_job_and_earn_money"
+                    android:textColor="@color/gray" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
