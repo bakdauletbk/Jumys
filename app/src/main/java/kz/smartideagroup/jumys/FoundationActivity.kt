@@ -28,8 +28,6 @@ class FoundationActivity : BaseActivity() {
 
     private var isRole: Boolean? = null
 
-    private var checkItem: Int? = null
-
     private var currentNavigationItemId = ZERO
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,42 +86,40 @@ class FoundationActivity : BaseActivity() {
     }
 
     private fun showProfileManagerFragment() {
-        currentNavigationItemId = R.id.profileManagerFragment
+        currentNavigationItemId = R.id.profile_menu
         navigateTo(R.id.profileManagerFragment)
     }
 
     private fun showSupportManagerFragment() {
-        currentNavigationItemId = R.id.supportManagerFragment
         navigateTo(R.id.supportManagerFragment)
     }
 
     private fun showClaimManagerFragment() {
-        currentNavigationItemId = R.id.claimManagerFragment
+        currentNavigationItemId = R.id.claim_menu
         navigateTo(R.id.claimManagerFragment)
     }
 
     private fun showHomeManagerFragment() {
-        currentNavigationItemId = R.id.homeManagerFragment
+        currentNavigationItemId = R.id.home_menu
         navigateTo(R.id.homeManagerFragment)
     }
 
     private fun showProfileClientFragment() {
-        currentNavigationItemId = R.id.profileClientFragment
+        currentNavigationItemId = R.id.profile_menu
         navigateTo(R.id.profileClientFragment)
     }
 
     private fun showSupportClientFragment() {
-        currentNavigationItemId = R.id.supportClientFragment
         navigateTo(R.id.supportClientFragment)
     }
 
     private fun showClaimClientFragment() {
-        currentNavigationItemId = R.id.claimClientFragment
+        currentNavigationItemId = R.id.claim_menu
         navigateTo(R.id.claimClientFragment)
     }
 
     private fun showHomeClientFragment() {
-        currentNavigationItemId = R.id.homeClientFragment
+        currentNavigationItemId = R.id.home_menu
         navigateTo(R.id.homeClientFragment)
     }
 
@@ -134,6 +130,7 @@ class FoundationActivity : BaseActivity() {
                 //Manager
                 R.id.homeManagerFragment -> {
                     isRole = false
+                    currentNavigationItemId = R.id.home_menu
                     bottom_navigation_bar.menu.getItem(HOME_MENU).isChecked = true
                     showBottomNavigation()
                 }
@@ -150,6 +147,7 @@ class FoundationActivity : BaseActivity() {
                 //Client
                 R.id.homeClientFragment -> {
                     isRole = true
+                    currentNavigationItemId = R.id.home_menu
                     bottom_navigation_bar.menu.getItem(HOME_MENU).isChecked = true
                     showBottomNavigation()
                 }

@@ -2,19 +2,15 @@ package kz.smartideagroup.jumys.client.view.apply_claim
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.location.Location
-import android.location.LocationListener
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.LocationRequest
-import com.google.android.material.snackbar.Snackbar
 import com.yandex.mapkit.MapKit
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
-import com.yandex.mapkit.location.LocationStatus
 import com.yandex.mapkit.map.CameraPosition
 import kotlinx.android.synthetic.main.fragment_map_client.*
 import kz.smartideagroup.jumys.R
@@ -32,6 +28,7 @@ class MapClientFragment : BaseFragment(R.layout.fragment_map_client) {
         const val TILT = 0.0f
         const val DURATION = 0F
     }
+
     private lateinit var locationRequest: LocationRequest
     private var mapKit: MapKit? = null
 
@@ -99,8 +96,6 @@ class MapClientFragment : BaseFragment(R.layout.fragment_map_client) {
         val userLoc = mapKit!!.createUserLocationLayer(map_view.mapWindow)
         userLoc.isVisible = true
 
-        Snackbar.make(requireView(), getString(R.string.search_location), Snackbar.LENGTH_LONG)
-            .show()
     }
 
     private fun initMap() {

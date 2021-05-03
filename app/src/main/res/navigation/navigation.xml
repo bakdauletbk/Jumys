@@ -104,7 +104,11 @@
         android:id="@+id/mapClientFragment"
         android:name="kz.smartideagroup.jumys.client.view.apply_claim.MapClientFragment"
         android:label="MapClientFragment"
-        tools:layout="@layout/fragment_map_client" />
+        tools:layout="@layout/fragment_map_client" >
+        <action
+            android:id="@+id/action_mapClientFragment_to_orderListFragment"
+            app:destination="@id/orderListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileClientFragment"
         android:name="kz.smartideagroup.jumys.client.view.profile.ProfileClientFragment"
@@ -115,5 +119,9 @@
         android:name="kz.smartideagroup.jumys.client.view.support.SupportClientFragment"
         android:label="SupportClientFragment"
         tools:layout="@layout/fragment_support_client" />
+    <fragment
+        android:id="@+id/orderListFragment"
+        android:name="kz.smartideagroup.jumys.client.view.apply_claim.OrderListFragment"
+        android:label="OrderListFragment" />
 
 </navigation>
