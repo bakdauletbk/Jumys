@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_contact"
+        android:id="@+id/cl_my_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimens_15dp"
@@ -16,32 +16,32 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/iv_contact"
+            android:id="@+id/iv_my_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimens_5dp"
-            android:src="@drawable/ic_message_icon"
+            android:src="@drawable/ic_user_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/tv_contact"
+            android:id="@+id/tv_my_profile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="@dimen/dimens_30dp"
-            android:text="@string/contact_technical_support"
+            android:text="@string/my_profile"
             android:textColor="@color/black"
             android:textSize="@dimen/dimens_14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iv_back_pressed_contact"
-            app:layout_constraintStart_toEndOf="@+id/iv_contact"
+            app:layout_constraintEnd_toStartOf="@+id/iv_back_pressed_my_profile"
+            app:layout_constraintStart_toEndOf="@+id/iv_my_profile"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/iv_back_pressed_contact"
+            android:id="@+id/iv_back_pressed_my_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dimens_5dp"
@@ -54,42 +54,42 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_request_call"
+        android:id="@+id/cl_change_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimens_15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_contact">
+        app:layout_constraintTop_toBottomOf="@+id/cl_my_profile">
 
         <ImageView
-            android:id="@+id/iv_request_call"
+            android:id="@+id/iv_change_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimens_5dp"
-            android:src="@drawable/ic_request_a_call"
+            android:src="@drawable/ic_city_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/tv_request_call"
+            android:id="@+id/tv_change_city"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="@dimen/dimens_30dp"
-            android:text="@string/request_a_call"
+            android:text="@string/change_city"
             android:textColor="@color/black"
             android:textSize="@dimen/dimens_14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iv_back_pressed_request_call"
-            app:layout_constraintStart_toEndOf="@+id/iv_request_call"
+            app:layout_constraintEnd_toStartOf="@+id/iv_back_pressed_change_city"
+            app:layout_constraintStart_toEndOf="@+id/iv_change_city"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/iv_back_pressed_request_call"
+            android:id="@+id/iv_back_pressed_change_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dimens_5dp"
@@ -102,20 +102,20 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_complaints_and_suggestions"
+        android:id="@+id/cl_invite_a_specialist_or_client"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimens_15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_request_call">
+        app:layout_constraintTop_toBottomOf="@+id/cl_change_city">
 
         <ImageView
-            android:id="@+id/iv_complaints_and_suggestions"
+            android:id="@+id/iv_invite_a_specialist_or_client"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimens_5dp"
-            android:src="@drawable/ic_notebook_icon"
+            android:src="@drawable/ic_share_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -123,21 +123,21 @@
 
 
         <TextView
-            android:id="@+id/tv_complaints_and_suggestions"
+            android:id="@+id/tv_invite_a_specialist_or_client"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="@dimen/dimens_30dp"
-            android:text="@string/complaints_and_suggestions"
+            android:text="@string/invite_a_specialist_or_client"
             android:textColor="@color/black"
             android:textSize="@dimen/dimens_14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iv_complaints_and_suggestions_open"
-            app:layout_constraintStart_toEndOf="@+id/iv_complaints_and_suggestions"
+            app:layout_constraintEnd_toStartOf="@+id/iv_on_back_pressed_specialist_client"
+            app:layout_constraintStart_toEndOf="@+id/iv_invite_a_specialist_or_client"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/iv_complaints_and_suggestions_open"
+            android:id="@+id/iv_on_back_pressed_specialist_client"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dimens_5dp"
@@ -150,41 +150,88 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_about_the_app"
+        android:id="@+id/cl_support"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimens_15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_complaints_and_suggestions">
+        app:layout_constraintTop_toBottomOf="@+id/cl_invite_a_specialist_or_client">
 
         <ImageView
-            android:id="@+id/iv_about_the_app"
+            android:id="@+id/iv_support"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimens_5dp"
-            android:src="@drawable/ic_alert_icon"
+            android:src="@drawable/ic_icon_headphones"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/tv_about_the_app"
+            android:id="@+id/tv_support"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="@dimen/dimens_30dp"
-            android:text="@string/about_app"
+            android:text="@string/support_text"
             android:textColor="@color/black"
             android:textSize="@dimen/dimens_14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iv_about_the_app_open"
-            app:layout_constraintStart_toEndOf="@+id/iv_about_the_app"
+            app:layout_constraintEnd_toStartOf="@+id/iv_on_back_pressed_support"
+            app:layout_constraintStart_toEndOf="@+id/iv_support"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/iv_about_the_app_open"
+            android:id="@+id/iv_on_back_pressed_support"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimens_5dp"
+            android:src="@drawable/ic_arrow_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_balance_statement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimens_15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_support">
+
+        <ImageView
+            android:id="@+id/iv_balance_statement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimens_5dp"
+            android:src="@drawable/ic_wallet_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_balance_statement"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="@dimen/dimens_30dp"
+            android:text="@string/balance_statement"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimens_14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/iv_on_back_pressed_balance_statement"
+            app:layout_constraintStart_toEndOf="@+id/iv_balance_statement"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_on_back_pressed_balance_statement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dimens_5dp"

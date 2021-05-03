@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimens_10dp"
+    android:background="@drawable/shape_white_radius18dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/dimens_48dp"
+        android:layout_height="@dimen/dimens_48dp"
+        android:layout_marginStart="@dimen/dimens_60dp"
+        android:layout_marginTop="@dimen/dimens_14dp"
+        android:layout_marginEnd="@dimen/dimens_60dp"
+        app:cardCornerRadius="@dimen/dimens_25dp">
+
+        <ImageView
+            android:id="@+id/iv_category"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black40"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimens_18dp"
+        android:layout_marginTop="@dimen/dimens_4dp"
+        android:layout_marginEnd="@dimen/dimens_18dp"
+        android:gravity="center"
+        android:text="@string/loading"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimens_13sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimens_15dp"
+        android:layout_marginTop="@dimen/dimens_20dp"
+        android:layout_marginEnd="@dimen/dimens_15dp"
+        android:layout_marginBottom="@dimen/dimens_13dp"
+        android:text="@string/loading"
+        android:textColor="@color/black60"
+        android:textSize="@dimen/dimens_12sp" />
+
+</LinearLayout>

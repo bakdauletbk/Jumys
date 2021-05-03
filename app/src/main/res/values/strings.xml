@@ -39,6 +39,13 @@
     <string name="further">Далее</string>
     <string name="dialog_exit">Выйти</string>
 
+    //Button
+    <string name="ok">Oк</string>
+
+    //Map
+    <string name="location_permissions">Разрешения на местоположение</string>
+    <string name="give_permissions_for_geolocation">Для корректной работы приложения необходимо дать разрешения на геолокацию</string>
+    <string name="search_location">Идет поиск…</string>
 
     //Обработка ошибки
     <string name="error_no_internet_title">Отсутствует интернет соединение</string>
@@ -48,11 +55,11 @@
     <string name="recommended_specialists">Рекомендованные специалисты</string>
     <string name="popular_questions">Популярные вопросы</string>
     <string name="advice">Советы</string>
-    <string name="loading">Загрузка...</string>
+    <string name="loading">Загрузка…</string>
     <string name="payment_amount">Сумма оплаты:</string>
     <string name="zero">0,0</string>
     <string name="back">Назад</string>
-    <string name="write">Написать...</string>
+    <string name="write">Написать…</string>
     <string name="settings">Настройки</string>
     <string name="username">Имя пользователя</string>
     <string name="phone">Телефон</string>
@@ -64,5 +71,22 @@
     <string name="complaints_and_suggestions">Жалобы и предложения</string>
     <string name="login_as_a_specialist">Войти как специалист</string>
     <string name="sign_out_of_your_account">Выйти из аккаунта</string>
+    <string name="search">Поиск</string>
+    <string name="orders_by_category">Заказы по категориям</string>
+    <string name="find_orders_nearby">Найти заказы поблизости</string>
+    <string name="your_balance">Ваш баланс</string>
+    <string name="zero_units">0 ед.</string>
+    <string name="personal_account">Лицевой счет:</string>
+    <string name="top_up">Пополнить</string>
+    <string name="enter_promo_code">Ввести промокод</string>
+    <string name="my_profile">Моя анкета</string>
+    <string name="change_city">Изменить город</string>
+    <string name="invite_a_specialist_or_client">Пригласить спеца или клиента</string>
+    <string name="balance_statement">Выписка по балансу</string>
+    <string name="about_app">О приложении</string>
+    <string name="receive_applications_at_night">Получать заявки в ночное время</string>
+    <string name="time">с 23:00 до 09:00</string>
+    <string name="login_as_customer">Войти как клиент</string>
+    <string name="list">Списком</string>
 
 </resources>

@@ -20,9 +20,15 @@ class FoundationActivity : BaseActivity() {
 
     companion object {
         const val ITEM_MENU = 2
+        const val SUPPORT_MENU = 3
+        const val HOME_MENU = 0
+        const val CLAIM_MENU = 1
+        const val PROFILE_MENU = 4
     }
 
     private var isRole: Boolean? = null
+
+    private var checkItem: Int? = null
 
     private var currentNavigationItemId = ZERO
 
@@ -101,7 +107,6 @@ class FoundationActivity : BaseActivity() {
         navigateTo(R.id.homeManagerFragment)
     }
 
-
     private fun showProfileClientFragment() {
         currentNavigationItemId = R.id.profileClientFragment
         navigateTo(R.id.profileClientFragment)
@@ -122,33 +127,40 @@ class FoundationActivity : BaseActivity() {
         navigateTo(R.id.homeClientFragment)
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun destinationListeners(navController: NavController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 //Manager
                 R.id.homeManagerFragment -> {
                     isRole = false
+                    bottom_navigation_bar.menu.getItem(HOME_MENU).isChecked = true
                     showBottomNavigation()
                 }
                 R.id.claimManagerFragment -> {
                     isRole = false
+                    bottom_navigation_bar.menu.getItem(CLAIM_MENU).isChecked = true
                     showBottomNavigation()
                 }
                 R.id.profileManagerFragment -> {
                     isRole = false
+                    bottom_navigation_bar.menu.getItem(PROFILE_MENU).isChecked = true
                     showBottomNavigation()
                 }
                 //Client
                 R.id.homeClientFragment -> {
                     isRole = true
+                    bottom_navigation_bar.menu.getItem(HOME_MENU).isChecked = true
                     showBottomNavigation()
                 }
                 R.id.claimClientFragment -> {
                     isRole = true
+                    bottom_navigation_bar.menu.getItem(CLAIM_MENU).isChecked = true
                     showBottomNavigation()
                 }
                 R.id.profileClientFragment -> {
                     isRole = true
+                    bottom_navigation_bar.menu.getItem(PROFILE_MENU).isChecked = true
                     showBottomNavigation()
                 }
                 else -> hideBottomNavigation()
@@ -169,6 +181,7 @@ class FoundationActivity : BaseActivity() {
 
     private fun setupNavController(navController: NavController) {
         bottom_navigation_bar.background = null
+        bottom_navigation_bar.menu.getItem(SUPPORT_MENU).isCheckable = false
         bottom_navigation_bar.menu.getItem(ITEM_MENU).isEnabled = false
         bottom_navigation_bar.itemIconTintList = null
         bottom_navigation_bar.setupWithNavController(navController)

@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_gray">
+    android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white_gray">
+        android:background="@color/background">
 
         <TextView
             android:id="@+id/tv_settings"
@@ -115,7 +115,7 @@
             android:backgroundTint="@color/green"
             android:paddingHorizontal="@dimen/dimens_15dp"
             android:paddingVertical="@dimen/dimens_15dp"
-            android:layout_marginBottom="@dimen/dimens_40dp"
+            android:layout_marginBottom="@dimen/dimens_100dp"
             android:text="@string/sign_out_of_your_account"
             android:textAllCaps="false"
             android:textColor="@color/white"

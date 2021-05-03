@@ -81,4 +81,9 @@ dependencies {
 
     //Code Input  https://github.com/raycoarana/material-code-input
     implementation 'com.raycoarana.codeinputview:codeinputview:2.1.1'
+
+    //MapKit
+    implementation 'com.yandex.android:maps.mobile:4.0.0-lite'
+
+
 }

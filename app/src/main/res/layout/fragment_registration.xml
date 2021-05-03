@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_gray">
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/textView"
@@ -64,7 +64,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white_gray"
+            android:background="@color/background"
             android:fontFamily="@font/whitney_book"
             android:hint="@string/enter_your_name"
             android:inputType="text"
@@ -105,7 +105,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white_gray"
+            android:background="@color/background"
             android:hint="@string/enter_your_email"
             android:fontFamily="@font/whitney_book"
             android:inputType="textEmailAddress"
