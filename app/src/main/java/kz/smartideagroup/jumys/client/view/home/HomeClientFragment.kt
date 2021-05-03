@@ -2,7 +2,6 @@ package kz.smartideagroup.jumys.client.view.home
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager

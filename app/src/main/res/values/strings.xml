@@ -88,5 +88,12 @@
     <string name="time">с 23:00 до 09:00</string>
     <string name="login_as_customer">Войти как клиент</string>
     <string name="list">Списком</string>
+    <string name="feedbacks">Отклики</string>
+    <string name="map">Карта</string>
+    <string name="calling">Позвонить</string>
+    <string name="what_should_be_done">Что нужно сделать?</string>
+    <string name="to_show_on_the_map">Показать на карте</string>
+    <string name="budget">Бюджет</string>
+    <string name="photo_video">Фото/Видео</string>
 
 </resources>

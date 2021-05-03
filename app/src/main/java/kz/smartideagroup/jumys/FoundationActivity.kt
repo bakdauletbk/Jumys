@@ -186,8 +186,8 @@ class FoundationActivity : BaseActivity() {
     }
 
     private fun hideBottomNavigation() {
-        fab.visibility = View.GONE
         bottom_bar.visibility = View.GONE
+        fab.visibility = View.GONE
     }
 
 }
