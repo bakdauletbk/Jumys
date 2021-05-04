@@ -12,7 +12,8 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimens_135dp"
+            android:layout_height="@dimen/dimens_140dp"
+            android:layout_marginBottom="@dimen/dimens_10dp"
             android:layout_marginTop="@dimen/dimens_20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +30,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view_pager">
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_apply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimens_20dp"
@@ -116,7 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimens_5dp"
-                android:paddingBottom="@dimen/dimens_80dp" />
+                android:paddingBottom="@dimen/dimens_90dp" />
 
         </LinearLayout>
 

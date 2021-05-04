@@ -17,7 +17,7 @@ import kz.smartideagroup.jumys.manager.view.home.adapter.ClaimAdapter
 import kz.smartideagroup.jumys.manager.view.home.adapter.PopularQuestionsAdapter
 import kz.smartideagroup.jumys.manager.view.home.adapter.RecommendedSpecialistsAdapter
 import kz.smartideagroup.jumys.manager.viewmodel.home.HomeManagerViewModel
-import java.util.ArrayList
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class HomeManagerFragment : BaseFragment(R.layout.fragment_home_manager) {
 
@@ -101,7 +101,9 @@ class HomeManagerFragment : BaseFragment(R.layout.fragment_home_manager) {
     }
 
     private fun initListeners() {
-
+        btn_apply.onClick {
+            navigateTo(R.id.cameraFragment)
+        }
     }
 
     private fun initObservers() {
