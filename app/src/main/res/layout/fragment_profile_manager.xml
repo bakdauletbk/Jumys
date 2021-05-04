@@ -109,13 +109,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_log_out_manager"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimens_40dp"
+            android:layout_marginBottom="@dimen/dimens_100dp"
             android:backgroundTint="@color/green"
             android:paddingHorizontal="@dimen/dimens_15dp"
             android:paddingVertical="@dimen/dimens_15dp"
-            android:layout_marginBottom="@dimen/dimens_100dp"
             android:text="@string/sign_out_of_your_account"
             android:textAllCaps="false"
             android:textColor="@color/white"

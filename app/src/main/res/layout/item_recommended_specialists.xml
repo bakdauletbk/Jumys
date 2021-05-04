@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="@dimen/dimens_150dp"
     android:layout_height="wrap_content"
-    android:elevation="@dimen/dimens_5dp"
+    android:elevation="@dimen/dimens_8dp"
     android:layout_margin="@dimen/dimens_5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,13 +23,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            app:layout_constraintEnd_toStartOf="@+id/textView7"
+            app:layout_constraintEnd_toStartOf="@+id/tv_rating"
             android:src="@drawable/ic_star"
             android:layout_marginEnd="@dimen/dimens_5dp"
             app:layout_constraintTop_toBottomOf="@+id/iv_recommended" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/tv_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -58,10 +58,11 @@
             android:layout_marginStart="@dimen/dimens_5dp"
             android:layout_marginTop="@dimen/dimens_10dp"
             android:layout_marginEnd="@dimen/dimens_5dp"
-            android:paddingBottom="@dimen/dimens_12dp"
+            android:layout_marginBottom="@dimen/dimens_12dp"
             android:text="@string/loading"
             android:textColor="@color/black80"
             android:textSize="@dimen/dimens_10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_name" />

@@ -1,5 +1,7 @@
 package kz.smartideagroup.jumys.client.model.response.apply_claim
 
+import java.io.Serializable
+
 data class AddressOrderResponse(
     val price: Double? = null,
     val img: String? = null,
@@ -11,4 +13,4 @@ data class AddressOrderResponse(
     val latitude: Double? = null,
     val longitude: Double? = null,
     val description: String? = null
-)
+):Serializable

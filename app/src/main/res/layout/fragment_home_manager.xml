@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.viewpager2.widget.ViewPager2
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimens_135dp"
@@ -19,12 +19,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/ll_apply"
+            android:id="@+id/ll_claim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimens_20dp"
             android:orientation="vertical"
-            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view_pager">
@@ -47,7 +46,49 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="@dimen/dimens_20dp"
+                android:layout_marginTop="@dimen/dimens_15dp"
+                android:text="@string/advice"
+                android:textColor="@color/green"
+                android:textSize="@dimen/dimens_14sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_advice_manager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimens_5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/dimens_12dp"
+                android:text="@string/claim"
+                android:textColor="@color/green"
+                android:textSize="@dimen/dimens_14sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_claims_manager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimens_5dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_apply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_20dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_claim">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:text="@string/recommended_specialists"
                 android:textColor="@color/green"
                 android:textSize="@dimen/dimens_14sp" />
@@ -56,7 +97,10 @@
                 android:id="@+id/rv_recommended_specialists"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_10dp" />
+                android:layout_marginTop="@dimen/dimens_10dp"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/dimens_15dp"
+                android:paddingEnd="@dimen/dimens_15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -71,53 +115,10 @@
                 android:id="@+id/rv_popular_questions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_10dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_claim"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_20dp"
-            android:orientation="vertical"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view_pager">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="@dimen/dimens_36dp"
-                android:text="@string/advice"
-                android:textColor="@color/green"
-                android:textSize="@dimen/dimens_14sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_advice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_5dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="@dimen/dimens_36dp"
-                android:text="@string/claim"
-                android:textColor="@color/green"
-                android:textSize="@dimen/dimens_14sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_claims"
                 android:layout_marginTop="@dimen/dimens_5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:paddingBottom="@dimen/dimens_80dp" />
 
         </LinearLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

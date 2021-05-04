@@ -18,6 +18,7 @@ import kz.smartideagroup.jumys.client.viewmodel.home.HomeClientViewModel
 import kz.smartideagroup.jumys.common.utils.ONE
 import kz.smartideagroup.jumys.common.utils.TWO
 import kz.smartideagroup.jumys.common.views.BaseFragment
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class HomeClientFragment : BaseFragment(R.layout.fragment_home_client) {
 
@@ -84,7 +85,9 @@ class HomeClientFragment : BaseFragment(R.layout.fragment_home_client) {
     }
 
     private fun initListeners() {
-
+        btn_find_order.onClick {
+            navigateTo(R.id.mapClientFragment)
+        }
     }
 
     private fun initObservers() {

@@ -122,6 +122,14 @@
     <fragment
         android:id="@+id/orderListFragment"
         android:name="kz.smartideagroup.jumys.client.view.apply_claim.OrderListFragment"
-        android:label="OrderListFragment" />
+        android:label="OrderListFragment" >
+        <action
+            android:id="@+id/action_orderListFragment_to_orderDetailPageFragment"
+            app:destination="@id/orderDetailPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailPageFragment"
+        android:name="kz.smartideagroup.jumys.client.view.apply_claim.OrderDetailPageFragment"
+        android:label="OrderDetailPageFragment" />
 
 </navigation>

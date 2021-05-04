@@ -47,6 +47,10 @@
     <string name="give_permissions_for_geolocation">Для корректной работы приложения необходимо дать разрешения на геолокацию</string>
     <string name="search_location">Идет поиск…</string>
 
+    //Call
+    <string name="call"> "Чтобы позвонить, пожалуйста, Нажмите Разрешить"</string>
+
+
     //Обработка ошибки
     <string name="error_no_internet_title">Отсутствует интернет соединение</string>
     <string name="error_unknown_body">Пожалуйста проверьте интернет соединени или попробуйте позднее</string>

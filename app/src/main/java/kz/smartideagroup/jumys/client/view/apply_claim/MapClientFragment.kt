@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
@@ -22,6 +21,7 @@ import com.yandex.runtime.ui_view.ViewProvider
 import kotlinx.android.synthetic.main.fragment_map_client.*
 import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.client.model.response.apply_claim.AddressOrderResponse
+import kz.smartideagroup.jumys.client.view.apply_claim.bottom_sheet.OrderBottomSheet
 import kz.smartideagroup.jumys.client.viewmodel.apply_claim.MapClientViewModel
 import kz.smartideagroup.jumys.common.utils.GpsUtils
 import kz.smartideagroup.jumys.common.utils.REQUEST_LOCATION_CODE
@@ -65,6 +65,7 @@ class MapClientFragment : BaseFragment(R.layout.fragment_map_client), MapObjectT
         initListeners()
         initObservers()
     }
+
 
     private fun getOrderAddress() {
         viewModel.getAddressOrderList()
@@ -145,6 +146,10 @@ class MapClientFragment : BaseFragment(R.layout.fragment_map_client), MapObjectT
     }
 
     private fun initListeners() {
+        ll_back_pressed.onClick {
+            navigateTo(R.id.homeClientFragment)
+        }
+
         btn_list_order.onClick {
             navigateTo(R.id.orderListFragment)
         }
@@ -197,7 +202,12 @@ class MapClientFragment : BaseFragment(R.layout.fragment_map_client), MapObjectT
 
     override fun onMapObjectTap(mapObject: MapObject, p1: Point): Boolean {
         val orderData: AddressOrderResponse = mapObject.userData as AddressOrderResponse
-        Toast.makeText(requireContext(), orderData.toString(), Toast.LENGTH_SHORT).show()
+        val bottomSheetDialogFragment = OrderBottomSheet.newInstance()
+        bottomSheetDialogFragment.setOrder(orderData)
+        bottomSheetDialogFragment.show(
+            requireActivity().supportFragmentManager,
+            "Bottom Sheet Dialog"
+        )
         return true
     }
 

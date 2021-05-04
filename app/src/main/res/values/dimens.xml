@@ -67,6 +67,7 @@
     <dimen name="dimens_140dp">140dp</dimen>
     <dimen name="dimens_150dp">150dp</dimen>
     <dimen name="dimens_200dp">200dp</dimen>
+    <dimen name="dimens_230dp">230dp</dimen>
     <dimen name="dimens_280dp">280dp</dimen>
     <dimen name="dimens_300dp">300dp</dimen>
     <dimen name="dimens_350dp">350dp</dimen>

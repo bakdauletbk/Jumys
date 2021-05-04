@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimens_15dp"
         android:layout_marginTop="@dimen/dimens_13dp"
+        android:textStyle="bold"
         android:layout_marginEnd="@dimen/dimens_15dp"
         android:text="@string/loading"
         android:textColor="@color/black"

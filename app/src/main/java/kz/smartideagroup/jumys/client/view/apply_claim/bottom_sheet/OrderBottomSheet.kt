@@ -1,57 +1,76 @@
-package kz.smartideagroup.jumys.common.views
+package kz.smartideagroup.jumys.client.view.apply_claim.bottom_sheet
 
 import android.Manifest
+import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.button.MaterialButton
 import kz.smartideagroup.jumys.R
+import kz.smartideagroup.jumys.client.model.response.apply_claim.AddressOrderResponse
 import kz.smartideagroup.jumys.common.utils.TEL
-import org.jetbrains.anko.support.v4.alert
+import kz.smartideagroup.jumys.common.utils.setImage
 
-open class BaseFragment(private val resource: Int) : Fragment() {
+class OrderBottomSheet : BottomSheetDialogFragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(resource, container, false)
+    private var orderResponse: AddressOrderResponse? = null
+
+    fun setOrder(orderResponse: AddressOrderResponse) {
+        this.orderResponse = orderResponse
     }
 
-    fun showErrorDialog(errorTitle: String, errorMessage: String) {
-        alert {
-            title = errorTitle
-            message = errorMessage
-            isCancelable = false
-            negativeButton(getString(R.string.dialog_exit)) {
-                activity?.finish()
-            }
-        }.show()
+    companion object {
+        fun newInstance(): OrderBottomSheet {
+            val args = Bundle()
+            val bottomSheetFragment: OrderBottomSheet = OrderBottomSheet()
+            bottomSheetFragment.arguments = args
+            return bottomSheetFragment
+        }
     }
 
-    fun showLongToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
+
+    @SuppressLint("RestrictedApi")
+    override fun setupDialog(dialog: Dialog, style: Int) {
+        super.setupDialog(dialog, style)
+        val view = View.inflate(context, R.layout.order_bottom_sheet, null)
+        dialog.setContentView(view)
+
+        val tvName = view.findViewById<TextView>(R.id.tv_name)
+        val tvDescription = view.findViewById<TextView>(R.id.tv_description_bottom_sheet)
+        val tvAddress = view.findViewById<TextView>(R.id.tv_address_bottom_sheet)
+        val tvPrice = view.findViewById<TextView>(R.id.tv_price)
+        val btnCall = view.findViewById<MaterialButton>(R.id.btn_call)
+        val ivClose = view.findViewById<ImageView>(R.id.iv_close)
+        val ivImage = view.findViewById<ImageView>(R.id.iv_image)
+
+
+        ivClose.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        orderResponse.let {
+            tvName.text = it!!.name
+            tvDescription.text = it.description
+            tvAddress.text = it.address
+            ivImage.setImage(it.img)
+            tvPrice.text = it.price!!.toLong().toString()
+        }
+
+        btnCall.setOnClickListener {
+            call(orderResponse!!.number.toString())
+        }
     }
 
-    fun showShortToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
-
-    fun navigateTo(navDirections: Int) {
-        requireActivity().findNavController(R.id.container)
-            .navigate(navDirections)
-    }
-
-    fun call(phone: String) {
+    private fun call(phone: String) {
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.CALL_PHONE

@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/dimens_15dp"
-    android:elevation="@dimen/dimens_5dp"
     android:layout_marginTop="5dp"
     android:layout_marginEnd="@dimen/dimens_15dp"
     android:layout_marginBottom="@dimen/dimens_5dp"
-    android:background="@drawable/shape_advice">
+    android:background="@drawable/shape_advice"
+    android:elevation="@dimen/dimens_1dp">
 
     <TextView
         android:id="@+id/tv_title"
@@ -17,37 +17,48 @@
         android:layout_marginStart="@dimen/dimens_14dp"
         android:layout_marginTop="@dimen/dimens_12dp"
         android:layout_marginEnd="@dimen/dimens_15dp"
+        android:paddingBottom="@dimen/dimens_12dp"
         android:text="@string/loading"
         android:textColor="@color/black"
         android:textSize="@dimen/dimens_14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/iv_close"
+        app:layout_constraintEnd_toStartOf="@+id/ll_show_hide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_close"
+    <LinearLayout
+        android:id="@+id/ll_show_hide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimens_13dp"
-        android:layout_marginEnd="@dimen/dimens_16dp"
-        android:src="@drawable/ic_close_claim_item"
+        android:padding="@dimen/dimens_10dp"
+        android:layout_marginTop="@dimen/dimens_3dp"
+        android:layout_marginEnd="@dimen/dimens_6dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_open_item_claim" />
+
+    </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_detail_claim"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimens_14dp"
-        android:layout_marginTop="@dimen/dimens_7dp"
         android:layout_marginEnd="@dimen/dimens_50dp"
         android:orientation="vertical"
         android:paddingBottom="@dimen/dimens_12dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
         <TextView
+            android:id="@+id/tv_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/loading"
@@ -55,6 +66,7 @@
             android:textSize="@dimen/dimens_12sp" />
 
         <TextView
+            android:id="@+id/tv_description_claim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimens_3dp"
@@ -77,8 +89,10 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tv_price_claim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimens_5dp"
                 android:text="@string/loading"
                 android:textColor="@color/black"
                 android:textSize="@dimen/dimens_14sp"
