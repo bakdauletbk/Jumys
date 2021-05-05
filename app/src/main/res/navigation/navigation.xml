@@ -29,7 +29,11 @@
         android:id="@+id/claimManagerFragment"
         android:name="kz.smartideagroup.jumys.manager.view.claim.ClaimManagerFragment"
         android:label="ClaimManagerFragment"
-        tools:layout="@layout/fragment_claim_manager" />
+        tools:layout="@layout/fragment_claim_manager" >
+        <action
+            android:id="@+id/action_claimManagerFragment_to_detailPageSpecialistFragment"
+            app:destination="@id/detailPageSpecialistFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileManagerFragment"
         android:name="kz.smartideagroup.jumys.manager.view.profile.ProfileManagerFragment"
@@ -131,5 +135,10 @@
         android:id="@+id/orderDetailPageFragment"
         android:name="kz.smartideagroup.jumys.client.view.apply_claim.OrderDetailPageFragment"
         android:label="OrderDetailPageFragment" />
+    <fragment
+        android:id="@+id/detailPageSpecialistFragment"
+        android:name="kz.smartideagroup.jumys.manager.view.claim.DetailPageSpecialistFragment"
+        android:label="DetailPageSpecialistFragment"
+        tools:layout="@layout/fragment_detail_page_specialist"/>
 
 </navigation>

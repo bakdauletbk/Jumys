@@ -99,5 +99,8 @@
     <string name="to_show_on_the_map">Показать на карте</string>
     <string name="budget">Бюджет</string>
     <string name="photo_video">Фото/Видео</string>
+    <string name="about_myself">О себе</string>
+    <string name="accept_the_artist">Принять испольнителя</string>
+    <string name="customers_reviews">Отзывы клиентов (0)</string>
 
 </resources>
