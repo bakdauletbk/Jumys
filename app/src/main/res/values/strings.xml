@@ -102,5 +102,26 @@
     <string name="about_myself">О себе</string>
     <string name="accept_the_artist">Принять испольнителя</string>
     <string name="customers_reviews">Отзывы клиентов (0)</string>
+    <string name="questionnaire">Анкета</string>
+    <string name="first_name">Имя</string>
+    <string name="edit_first_name">Введите имя</string>
+    <string name="surname">Фамилия</string>
+    <string name="edit_surname">Введите фамилию</string>
+    <string name="fatherland">Отечество</string>
+    <string name="enter_fatherland">Введите отечество</string>
+    <string name="date_of_birth">Дата рождения</string>
+    <string name="days">День</string>
+    <string name="month">Месяц</string>
+    <string name="year">Год</string>
+    <string name="gender">Пол</string>
+    <string name="man">Мужчина</string>
+    <string name="woman">Женщина</string>
+    <string name="iin">ИИН</string>
+    <string name="enter_iin">Введите иин</string>
+    <string name="change">Изменить</string>
+    <string name="app_version">Версия приложения 1.0</string>
+    <string name="too_jumys">© 2021 ТОО “Jumys”</string>
+    <string name="follow_us_on_social_colors">Следите за нами в социальных цветах</string>
+    <string name="we_will_contact_you_shortly">Свяжемся с вами в ближайшее время</string>
 
 </resources>
