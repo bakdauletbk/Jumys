@@ -62,7 +62,6 @@ class HomeClientFragment : BaseFragment(R.layout.fragment_home_client) {
             adapter = adviceAdapter
             layoutManager = LinearLayoutManager(context)
         }
-
         rv_orders_by_category.apply {
             adapter = categoryAdapter
             layoutManager = GridLayoutManager(

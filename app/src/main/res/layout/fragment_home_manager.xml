@@ -13,8 +13,8 @@
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimens_140dp"
-            android:layout_marginBottom="@dimen/dimens_10dp"
             android:layout_marginTop="@dimen/dimens_20dp"
+            android:layout_marginBottom="@dimen/dimens_10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,21 +48,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="@dimen/dimens_15dp"
-                android:text="@string/advice"
-                android:textColor="@color/green"
-                android:textSize="@dimen/dimens_14sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_advice_manager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_5dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="@dimen/dimens_12dp"
                 android:text="@string/claim"
                 android:textColor="@color/green"
@@ -73,6 +58,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimens_5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/dimens_20dp"
+                android:text="@string/recommended_specialists"
+                android:textColor="@color/green"
+                android:textSize="@dimen/dimens_14sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_recommended_specialists"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimens_10dp"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/dimens_15dp"
+                android:paddingEnd="@dimen/dimens_15dp" />
 
         </LinearLayout>
 
@@ -91,30 +94,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="@string/recommended_specialists"
-                android:textColor="@color/green"
-                android:textSize="@dimen/dimens_14sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_recommended_specialists"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_10dp"
-                android:clipToPadding="false"
-                android:paddingStart="@dimen/dimens_15dp"
-                android:paddingEnd="@dimen/dimens_15dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="@dimen/dimens_20dp"
                 android:text="@string/popular_questions"
                 android:textColor="@color/green"
                 android:textSize="@dimen/dimens_14sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_popular_questions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimens_5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/dimens_15dp"
+                android:text="@string/advice"
+                android:textColor="@color/green"
+                android:textSize="@dimen/dimens_14sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_advice_manager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimens_5dp"

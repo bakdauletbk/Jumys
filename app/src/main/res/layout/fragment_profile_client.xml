@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/background"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +21,6 @@
             android:textColor="@color/green"
             android:textSize="@dimen/dimens_23sp"
             android:textStyle="bold" />
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -115,6 +114,7 @@
             android:orientation="vertical">
 
             <include layout="@layout/layout_profile_client_menu" />
+
         </LinearLayout>
 
         <TextView
@@ -206,7 +206,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_login_as_a_specialist" />
-
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
