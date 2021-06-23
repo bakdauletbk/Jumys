@@ -2,9 +2,13 @@ package kz.smartideagroup.jumys.manager.view.apply_claim
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.ContextWrapper
 import android.content.pm.PackageManager
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -14,8 +18,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.fragment_camera.*
 import kz.smartideagroup.jumys.R
+import kz.smartideagroup.jumys.common.utils.COUNT_DOWN_INTERVAL
+import kz.smartideagroup.jumys.common.utils.FIFTEEN
+import kz.smartideagroup.jumys.common.utils.ZERO
 import kz.smartideagroup.jumys.common.views.BaseFragment
-import org.jetbrains.anko.sdk27.coroutines.onClick
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,19 +34,19 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
         private const val TAG = "CameraXBasic"
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
         private const val REQUEST_CODE_PERMISSIONS = 10
-        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+        private val REQUIRED_PERMISSIONS =
+            arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
         private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
+        private const val MP4 = ".mp4"
+        private const val JPG = ".jpg"
     }
 
     private var isRecording = false
-
     private val videoCapture = VideoCapture.Builder().build()
-
-    private var imageCapture: ImageCapture? = null
-
+    private var imageCapture = ImageCapture.Builder().build()
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
-    private var permissions: Array<String> = arrayOf(Manifest.permission.RECORD_AUDIO)
+    private var mCountDownTimer: CountDownTimer? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,16 +61,6 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
     }
 
     private fun initPermissions() {
-
-        ActivityCompat.requestPermissions(
-            requireActivity(),
-            permissions,
-            REQUEST_RECORD_AUDIO_PERMISSION
-        )
-
-        imageCapture = ImageCapture.Builder()
-            .build()
-
         // Request camera permissions
         if (allPermissionsGranted()) {
             startCamera()
@@ -75,7 +71,6 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
         }
 
         outputDirectory = getOutputDirectory()
-
         cameraExecutor = Executors.newSingleThreadExecutor()
 
     }
@@ -101,22 +96,15 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
     }
 
     private fun takePhoto() {
-        // Get a stable reference of the modifiable image capture use case
-        val imageCapture = imageCapture ?: return
-
-        // Create time-stamped output file to hold the image
         val photoFile = File(
             outputDirectory,
             SimpleDateFormat(
                 FILENAME_FORMAT, Locale.US
-            ).format(System.currentTimeMillis()) + ".jpg"
+            ).format(System.currentTimeMillis()) + JPG
         )
 
-        // Create output options object which contains file + metadata
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
 
-        // Set up image capture listener, which is triggered after photo has
-        // been taken
         imageCapture.takePicture(
             outputOptions,
             ContextCompat.getMainExecutor(requireContext()),
@@ -138,30 +126,19 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 
-        cameraProviderFuture.addListener(Runnable {
-            // Used to bind the lifecycle of cameras to the lifecycle owner
+        cameraProviderFuture.addListener({
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 
-            // Preview
             val preview = Preview.Builder()
                 .build()
                 .also {
                     it.setSurfaceProvider(viewFinder.surfaceProvider)
                 }
 
-            imageCapture = ImageCapture.Builder()
-                .build()
-            imageCapture = ImageCapture.Builder()
-                .build()
-
-            // Select back camera as a default
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
             try {
-                // Unbind use cases before rebinding
                 cameraProvider.unbindAll()
-
-                // Bind use cases to camera
                 cameraProvider.bindToLifecycle(
                     this, cameraSelector, preview, imageCapture
                 )
@@ -182,8 +159,8 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
         IntArray
     ) {
 
-        when(requestCode){
-            REQUEST_CODE_PERMISSIONS->{
+        when (requestCode) {
+            REQUEST_CODE_PERMISSIONS -> {
                 if (allPermissionsGranted()) {
                     startCamera()
                 } else {
@@ -194,8 +171,8 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                     ).show()
                 }
             }
-            REQUEST_RECORD_AUDIO_PERMISSION ->{
-                grantResults[0] == PackageManager.PERMISSION_GRANTED
+            REQUEST_RECORD_AUDIO_PERMISSION -> {
+                grantResults[ZERO] = PackageManager.PERMISSION_GRANTED
             }
         }
     }
@@ -205,8 +182,8 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
         val videoFile = File(
             outputDirectory,
             SimpleDateFormat(
-                "yyyy-MM-dd-HH-mm-ss-SSS", Locale.US
-            ).format(System.currentTimeMillis()) + ".mp4"
+                FILENAME_FORMAT, Locale.US
+            ).format(System.currentTimeMillis()) + MP4
         )
 
         val outputOptions = VideoCapture.OutputFileOptions.Builder(videoFile).build()
@@ -216,7 +193,6 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                 Manifest.permission.RECORD_AUDIO
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-
             return
         }
 
@@ -245,26 +221,58 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
     private fun initViewModel() {}
 
     private fun initListeners() {
-//        btn_camera_capture.onClick {
-//            takePhoto()
-//        }
-//         Set up the listener for take photo button
         btn_camera_capture.setOnClickListener {
-            when (isRecording) {
+            takePhoto()
+        }
+        btn_camera_capture.setOnLongClickListener {
+            isRecording = when (isRecording) {
                 true -> {
                     stopRecording()
-                    Toast.makeText(requireContext(), "Stop Recording", Toast.LENGTH_LONG).show()
-                    isRecording = false
+                    false
                 }
                 false -> {
-            startRecording()
-            Toast.makeText(requireContext(), "Start Recording", Toast.LENGTH_LONG).show()
-            isRecording = true
+                    startTimer()
+                    startRecording()
+                    true
                 }
             }
+            true
         }
     }
 
     private fun initObservers() {}
+
+    private fun readFileFromInternalStorage(path: String) {
+        val cw = ContextWrapper(context)
+        //path to /data/data/yourapp/app_data/dirName
+        val directory: File = cw.getDir("dirName", Context.MODE_PRIVATE)
+        val mypath = File(directory, path)
+        iv_image_test.setImageDrawable(Drawable.createFromPath(mypath.toString()))
+    }
+
+    private fun startTimer() {
+        var i = ZERO
+
+        pb_recording_timer.progress = i
+
+        mCountDownTimer = object : CountDownTimer(FIFTEEN, COUNT_DOWN_INTERVAL) {
+            override fun onTick(millisUntilFinished: Long) {
+                pb_recording_timer.visibility = View.VISIBLE
+                i++
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    pb_recording_timer.setProgress(i, true)
+                } else {
+                    pb_recording_timer.progress = i
+                }
+            }
+
+            override fun onFinish() {
+                stopRecording()
+                pb_recording_timer.visibility = View.GONE
+            }
+
+        }.start()
+    }
+
 
 }
