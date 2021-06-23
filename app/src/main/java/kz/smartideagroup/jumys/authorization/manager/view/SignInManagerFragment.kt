@@ -1,14 +1,14 @@
-package kz.smartideagroup.jumys.authorization.view
+package kz.smartideagroup.jumys.authorization.manager.view
 
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.Navigation
-import kotlinx.android.synthetic.main.fragment_sign_in.*
+import kotlinx.android.synthetic.main.fragment_sign_in_manager.*
 import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
+class SignInManagerFragment : BaseFragment(R.layout.fragment_sign_in_manager) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

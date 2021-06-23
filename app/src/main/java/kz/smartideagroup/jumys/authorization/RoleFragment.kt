@@ -1,10 +1,10 @@
-package kz.smartideagroup.jumys
+package kz.smartideagroup.jumys.authorization
 
 import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
-import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_role.*
+import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
@@ -27,11 +27,11 @@ class RoleFragment : BaseFragment(R.layout.fragment_role) {
 
     private fun initListeners() {
         ll_customer.onClick {
-            navigateTo(R.id.homeManagerFragment)
+            navigateTo(R.id.action_roleFragment_to_signInManagerFragment)
         }
 
         ll_specialist.onClick {
-            navigateTo(R.id.homeClientFragment)
+            navigateTo(R.id.action_roleFragment_to_signInFragment)
         }
     }
 

@@ -123,5 +123,24 @@
     <string name="too_jumys">© 2021 ТОО “Jumys”</string>
     <string name="follow_us_on_social_colors">Следите за нами в социальных цветах</string>
     <string name="we_will_contact_you_shortly">Свяжемся с вами в ближайшее время</string>
+    <string name="fill_out_a_questionnaire">Чтобы продолжить, заполните анкету</string>
+
+
+    <string name="z">*</string>
+    <string name="ip">ИП</string>
+    <string name="too">ТОО</string>
+    <string name="surnname">Фамилия</string>
+    <string name="enter_your_surname">Введите фамилию</string>
+    <string name="enter_your_fatherland">Введите отечество</string>
+    <string name="bithday">Дата рождения</string>
+    <string name="day">День</string>
+    <string name="women">Женщина</string>
+    <string name="bin">БИН</string>
+    <string name="enter_your_bin">Введите БИН</string>
+    <string name="enter_your_iin">Введите ИИН</string>
+    <string name="number_register">Номер свидетельства о регистрации</string>
+    <string name="enter_the_number">Введите номер</string>
+    <string name="attch_photo">Прикрепить фото свидетельства о регистрации</string>
+    <string name="attach_photo_human">Прикрепить фото свидетельства о регистрации юридического лица</string>
 
 </resources>

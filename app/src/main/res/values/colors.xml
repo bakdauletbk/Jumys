@@ -22,5 +22,7 @@
     <color name="black40">#979797</color>
     <color name="black80">#80000000</color>
 
+    <color name="red">#DC0F0F</color>
+    <color name="add_plus">#EDEEF1</color>
     
 </resources>

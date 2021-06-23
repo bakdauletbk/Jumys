@@ -1,11 +1,13 @@
-package kz.smartideagroup.jumys.authorization.view
+package kz.smartideagroup.jumys.authorization.client.view
 
 import android.os.Bundle
 import android.view.View
+import kotlinx.android.synthetic.main.fragment_sms_code_client.*
 import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.common.views.BaseFragment
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
+class SmsCodeClientFragment : BaseFragment(R.layout.fragment_sms_code_client) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -13,20 +15,13 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
     }
 
     private fun lets() {
-        initViewModel()
         initListeners()
-        initObservers()
-    }
-
-    private fun initObservers() {
-
     }
 
     private fun initListeners() {
-
+        btn_next.onClick {
+            navigateTo(R.id.action_smsCodeManagerFragment_to_registrationManagerFragment)
+        }
     }
 
-    private fun initViewModel() {
-
-    }
 }

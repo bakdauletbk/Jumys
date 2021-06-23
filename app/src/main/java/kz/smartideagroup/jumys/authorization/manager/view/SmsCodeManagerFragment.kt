@@ -1,14 +1,14 @@
-package kz.smartideagroup.jumys.authorization.view
+package kz.smartideagroup.jumys.authorization.manager.view
 
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.Navigation
-import kotlinx.android.synthetic.main.fragment_sms_code.*
+import kotlinx.android.synthetic.main.fragment_sms_code_manager.*
 import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class SmsCodeFragment : BaseFragment(R.layout.fragment_sms_code) {
+class SmsCodeManagerFragment : BaseFragment(R.layout.fragment_sms_code_manager) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

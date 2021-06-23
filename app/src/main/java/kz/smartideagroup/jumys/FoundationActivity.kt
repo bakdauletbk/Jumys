@@ -3,6 +3,8 @@ package kz.smartideagroup.jumys
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.ImageProxy
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -10,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_foundation.*
 import kz.smartideagroup.jumys.common.utils.ZERO
 import kz.smartideagroup.jumys.common.views.BaseActivity
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import java.nio.ByteBuffer
 
 class FoundationActivity : BaseActivity() {
 
@@ -17,6 +20,7 @@ class FoundationActivity : BaseActivity() {
     isRole = true -> Client
     isRole = false -> Manager
      */
+
 
     companion object {
         const val ITEM_MENU = 2

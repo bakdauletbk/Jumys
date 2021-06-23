@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/onBoardingFragment">
+    app:startDestination="@id/cameraFragment">
 
     <fragment
         android:id="@+id/roleFragment"
-        android:name="kz.smartideagroup.jumys.RoleFragment"
+        android:name="kz.smartideagroup.jumys.authorization.RoleFragment"
         android:label="RoleFragment"
         tools:layout="@layout/fragment_role">
         <action
@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_roleFragment_to_homeClientFragment"
             app:destination="@id/homeClientFragment" />
+        <action
+            android:id="@+id/action_roleFragment_to_signInManagerFragment"
+            app:destination="@id/signInManagerFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeManagerFragment"
@@ -29,7 +32,7 @@
         android:id="@+id/claimManagerFragment"
         android:name="kz.smartideagroup.jumys.manager.view.claim.ClaimManagerFragment"
         android:label="ClaimManagerFragment"
-        tools:layout="@layout/fragment_claim_manager" >
+        tools:layout="@layout/fragment_claim_manager">
         <action
             android:id="@+id/action_claimManagerFragment_to_detailPageSpecialistFragment"
             app:destination="@id/detailPageSpecialistFragment" />
@@ -47,27 +50,27 @@
         tools:layout="@layout/fragment_support_manager" />
     <fragment
         android:id="@+id/signInFragment"
-        android:name="kz.smartideagroup.jumys.authorization.view.SignInFragment"
+        android:name="kz.smartideagroup.jumys.authorization.manager.view.SignInManagerFragment"
         android:label="SignInFragment"
-        tools:layout="@layout/fragment_sign_in">
+        tools:layout="@layout/fragment_sign_in_manager">
         <action
             android:id="@+id/action_signInFragment_to_smsCodeFragment"
             app:destination="@id/smsCodeFragment" />
     </fragment>
     <fragment
         android:id="@+id/smsCodeFragment"
-        android:name="kz.smartideagroup.jumys.authorization.view.SmsCodeFragment"
+        android:name="kz.smartideagroup.jumys.authorization.manager.view.SmsCodeManagerFragment"
         android:label="SmsCodeFragment"
-        tools:layout="@layout/fragment_sms_code">
+        tools:layout="@layout/fragment_sms_code_manager">
         <action
             android:id="@+id/action_smsCodeFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="kz.smartideagroup.jumys.authorization.view.RegistrationFragment"
+        android:name="kz.smartideagroup.jumys.authorization.manager.view.RegistrationManagerFragment"
         android:label="RegistrationFragment"
-        tools:layout="@layout/fragment_registration" />
+        tools:layout="@layout/fragment_registration_manager" />
     <fragment
         android:id="@+id/splashFragment"
         android:name="kz.smartideagroup.jumys.splash.SplashFragment"
@@ -108,7 +111,7 @@
         android:id="@+id/mapClientFragment"
         android:name="kz.smartideagroup.jumys.client.view.apply_claim.MapClientFragment"
         android:label="MapClientFragment"
-        tools:layout="@layout/fragment_map_client" >
+        tools:layout="@layout/fragment_map_client">
         <action
             android:id="@+id/action_mapClientFragment_to_orderListFragment"
             app:destination="@id/orderListFragment" />
@@ -126,7 +129,7 @@
     <fragment
         android:id="@+id/orderListFragment"
         android:name="kz.smartideagroup.jumys.client.view.apply_claim.OrderListFragment"
-        android:label="OrderListFragment" >
+        android:label="OrderListFragment">
         <action
             android:id="@+id/action_orderListFragment_to_orderDetailPageFragment"
             app:destination="@id/orderDetailPageFragment" />
@@ -139,6 +142,55 @@
         android:id="@+id/detailPageSpecialistFragment"
         android:name="kz.smartideagroup.jumys.manager.view.claim.DetailPageSpecialistFragment"
         android:label="DetailPageSpecialistFragment"
-        tools:layout="@layout/fragment_detail_page_specialist"/>
+        tools:layout="@layout/fragment_detail_page_specialist" />
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="kz.smartideagroup.jumys.client.view.about_app.AboutAppFragment"
+        android:label="AboutAppFragment"
+        tools:layout="@layout/fragment_about_app" />
+    <fragment
+        android:id="@+id/cityClientFragment"
+        android:name="kz.smartideagroup.jumys.client.view.profile.CityClientFragment"
+        android:label="CityClientFragment"
+        tools:layout="@layout/fragment_city" />
+    <fragment
+        android:id="@+id/placingOrderFragment"
+        android:name="kz.smartideagroup.jumys.manager.view.apply_claim.PlacingOrderFragment"
+        android:label="PlacingOrderFragment"
+        tools:layout="@layout/fragment_placing_order" />
+    <fragment
+        android:id="@+id/questionnaireFragment"
+        android:name="kz.smartideagroup.jumys.client.view.profile.QuestionnaireFragment"
+        android:label="QuestionnaireFragment"
+        tools:layout="@layout/fragment_questionnaire" />
+    <fragment
+        android:id="@+id/requestCallClientFragment"
+        android:name="kz.smartideagroup.jumys.client.view.profile.RequestCallClientFragment"
+        android:label="RequestCallClientFragment"
+        tools:layout="@layout/fragment_request_call_client" />
+    <fragment
+        android:id="@+id/signInManagerFragment"
+        android:name="kz.smartideagroup.jumys.authorization.client.view.SignInClientFragment"
+        android:label="SignInManagerFragment"
+        tools:layout="@layout/fragment_sign_in_client">
+        <action
+            android:id="@+id/action_signInManagerFragment_to_smsCodeManagerFragment"
+            app:destination="@id/smsCodeManagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/smsCodeManagerFragment"
+        android:name="kz.smartideagroup.jumys.authorization.client.view.SmsCodeClientFragment"
+        android:label="SmsCodeManagerFragment"
+        tools:layout="@layout/fragment_sms_code_client" >
+        <action
+            android:id="@+id/action_smsCodeManagerFragment_to_registrationManagerFragment"
+            app:destination="@id/registrationManagerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registrationManagerFragment"
+        android:name="kz.smartideagroup.jumys.authorization.client.view.RegistrationClientFragment"
+        android:label="RegistrationManagerFragment"
+        tools:layout="@layout/fragment_registration_client" />
 
 </navigation>
