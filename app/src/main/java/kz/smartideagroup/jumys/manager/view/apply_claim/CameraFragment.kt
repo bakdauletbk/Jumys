@@ -19,6 +19,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.exifinterface.media.ExifInterface
+import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_camera.*
 import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.common.utils.*
@@ -115,12 +116,12 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     val msg = "Photo capture succeeded: $savedUri"
-
-//                    bundle.putString(PUT_SAVED_URI, savedUri.toString())
                     readFileFromInternalStorage(savedUri.toString())
 
-//                    requireActivity().findNavController(R.id.container)
-//                        .navigate(R.id.placingOrderFragment, bundle)
+                    val pathName = savedUri.toString().substring(SEVEN, savedUri.toString().length)
+                    bundle.putString(PUT_SAVED_URI, pathName)
+                    requireActivity().findNavController(R.id.container)
+                        .navigate(R.id.placingOrderFragment, bundle)
 
                     Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
@@ -176,6 +177,13 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                     }
                     BitmapFactory.decodeStream(inputStream)
                     Log.d("ErmahanAc", selectImage?.path.toString())
+
+                    val pathName = selectImage?.path.toString()
+                        .substring(FIVE, selectImage?.path.toString().length)
+                    bundle.putString(PUT_SAVED_URI, pathName)
+                    requireActivity().findNavController(R.id.container)
+                        .navigate(R.id.placingOrderFragment, bundle)
+
                     iv_image_test.setImageURI(selectImage)
                 }
             }
@@ -243,6 +251,11 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                 override fun onVideoSaved(outputFileResults: VideoCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(videoFile)
                     val msg = "Video capture succeeded: $savedUri"
+
+                    bundle.putString(PUT_SAVED_URI, savedUri.toString())
+                    requireActivity().findNavController(R.id.container)
+                        .navigate(R.id.placingOrderFragment, bundle)
+
                     Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                     Log.d("Video", msg)
                 }

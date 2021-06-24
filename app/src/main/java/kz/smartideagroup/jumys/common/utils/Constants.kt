@@ -26,6 +26,7 @@ const val DEGREES_180 = 180f
 const val DEGREES_270 = 270f
 const val SIX = 6
 const val THREE = 3
+const val FIVE = 5
 const val EIGHT = 8
 const val SEVEN = 7
 
