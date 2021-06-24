@@ -161,9 +161,9 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        when (resultCode) {
-            Activity.RESULT_OK -> {
-                if (requestCode == SELECT_PHOTO) {
+        when (requestCode) {
+            SELECT_PHOTO -> {
+                if (resultCode == Activity.RESULT_OK) {
                     val selectImage = data?.data
                     var inputStream: InputStream? = null
                     try {
@@ -173,7 +173,6 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                             )
                         }
                     } catch (e: FileNotFoundException) {
-                        Log.d("ErmahanAc", e.toString())
                     }
                     BitmapFactory.decodeStream(inputStream)
                     Log.d("ErmahanAc", selectImage?.path.toString())
@@ -206,8 +205,11 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
     }
 
     private fun openGallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = IMAGE
+        val intent = Intent(
+            Intent.ACTION_PICK,
+            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        )
+        intent.type = (IMAGE_VIDEO)
         activity?.startActivityFromFragment(this, intent, SELECT_PHOTO)
     }
 

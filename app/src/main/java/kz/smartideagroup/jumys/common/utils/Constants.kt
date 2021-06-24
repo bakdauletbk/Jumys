@@ -38,4 +38,4 @@ const val MP4 = ".mp4"
 const val JPG = ".jpg"
 
 const val SELECT_PHOTO = 100
-const val IMAGE = "image/*"
+const val IMAGE_VIDEO = "image/* video/*"
