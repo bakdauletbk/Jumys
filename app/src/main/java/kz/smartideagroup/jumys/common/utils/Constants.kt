@@ -16,3 +16,13 @@ const val PADDING_BOTTOM = 5
 const val PADDING = 20f
 const val PAGE_MARGIN = 12f
 const val TIME_MILLIS = 4000L
+const val PUT_SAVED_URI = "PUT_SAVED_URI"
+
+//Bitmap
+const val DEGREES_90 = 90f
+const val DEGREES_180 = 180f
+const val DEGREES_270 = 270f
+const val SIX = 6
+const val THREE = 3
+const val EIGHT = 8
+const val SEVEN = 7

@@ -2,10 +2,11 @@ package kz.smartideagroup.jumys.manager.view.apply_claim
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.ContextWrapper
 import android.content.pm.PackageManager
-import android.graphics.drawable.Drawable
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Matrix
+import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -18,15 +19,14 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.fragment_camera.*
 import kz.smartideagroup.jumys.R
-import kz.smartideagroup.jumys.common.utils.COUNT_DOWN_INTERVAL
-import kz.smartideagroup.jumys.common.utils.FIFTEEN
-import kz.smartideagroup.jumys.common.utils.ZERO
+import kz.smartideagroup.jumys.common.utils.*
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+
 
 class CameraFragment : BaseFragment(R.layout.fragment_camera) {
 
@@ -47,6 +47,7 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
     private var mCountDownTimer: CountDownTimer? = null
+    private val bundle = Bundle()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -116,6 +117,13 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     val msg = "Photo capture succeeded: $savedUri"
+
+//                    bundle.putString(PUT_SAVED_URI, savedUri.toString())
+                    readFileFromInternalStorage(savedUri.toString())
+
+//                    requireActivity().findNavController(R.id.container)
+//                        .navigate(R.id.placingOrderFragment, bundle)
+
                     Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
                 }
@@ -243,11 +251,37 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
     private fun initObservers() {}
 
     private fun readFileFromInternalStorage(path: String) {
-        val cw = ContextWrapper(context)
-        //path to /data/data/yourapp/app_data/dirName
-        val directory: File = cw.getDir("dirName", Context.MODE_PRIVATE)
-        val mypath = File(directory, path)
-        iv_image_test.setImageDrawable(Drawable.createFromPath(mypath.toString()))
+        iv_image_test.visibility = View.VISIBLE
+
+        val pathName = path.substring(SEVEN, path.length)
+
+        var bitmap =
+            BitmapFactory.decodeFile(pathName)
+
+        try {
+            val exif =
+                ExifInterface(pathName)
+            val orientation: Int = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ONE)
+
+            val matrix = Matrix()
+            when (orientation) {
+                SIX -> matrix.postRotate(DEGREES_90)
+                THREE -> matrix.postRotate(DEGREES_180)
+                EIGHT -> matrix.postRotate(DEGREES_270)
+            }
+            bitmap = Bitmap.createBitmap(
+                bitmap,
+                ZERO,
+                ZERO,
+                bitmap.width,
+                bitmap.height,
+                matrix,
+                true
+            ) // rotating bitmap
+        } catch (e: java.lang.Exception) {
+        }
+
+        iv_image_test.setImageBitmap(bitmap)
     }
 
     private fun startTimer() {

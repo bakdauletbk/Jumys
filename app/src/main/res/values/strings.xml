@@ -142,5 +142,9 @@
     <string name="enter_the_number">Введите номер</string>
     <string name="attch_photo">Прикрепить фото свидетельства о регистрации</string>
     <string name="attach_photo_human">Прикрепить фото свидетельства о регистрации юридического лица</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="service_budget">Бюджет за услугу</string>
+    <string name="enter_the_amount">Ввести сумму</string>
+    <string name="publish">Опубликовать</string>
 
 </resources>
