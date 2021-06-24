@@ -1,5 +1,7 @@
 package kz.smartideagroup.jumys.common.utils
 
+import android.Manifest
+
 const val CONTENT_TYPE_JSON = "application/json"
 const val DELAY_THREE_SECOND = 3000L
 const val ZERO = 0
@@ -26,3 +28,14 @@ const val SIX = 6
 const val THREE = 3
 const val EIGHT = 8
 const val SEVEN = 7
+
+const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
+const val REQUEST_CODE_PERMISSIONS = 10
+val REQUIRED_PERMISSIONS =
+    arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
+const val REQUEST_RECORD_AUDIO_PERMISSION = 200
+const val MP4 = ".mp4"
+const val JPG = ".jpg"
+
+const val SELECT_PHOTO = 100
+const val IMAGE = "image/*"

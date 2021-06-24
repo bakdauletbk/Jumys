@@ -2,11 +2,12 @@ package kz.smartideagroup.jumys.manager.view.apply_claim
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
-import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -17,11 +18,15 @@ import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.exifinterface.media.ExifInterface
 import kotlinx.android.synthetic.main.fragment_camera.*
 import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.common.utils.*
 import kz.smartideagroup.jumys.common.views.BaseFragment
+import org.jetbrains.anko.sdk27.coroutines.onClick
 import java.io.File
+import java.io.FileNotFoundException
+import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
@@ -32,13 +37,6 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
 
     companion object {
         private const val TAG = "CameraXBasic"
-        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
-        private const val REQUEST_CODE_PERMISSIONS = 10
-        private val REQUIRED_PERMISSIONS =
-            arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
-        private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
-        private const val MP4 = ".mp4"
-        private const val JPG = ".jpg"
     }
 
     private var isRecording = false
@@ -162,11 +160,33 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
 
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (resultCode) {
+            Activity.RESULT_OK -> {
+                if (requestCode == SELECT_PHOTO) {
+                    val selectImage = data?.data
+                    var inputStream: InputStream? = null
+                    try {
+                        inputStream = selectImage?.let {
+                            activity?.contentResolver?.openInputStream(
+                                it
+                            )
+                        }
+                    } catch (e: FileNotFoundException) {
+                        Log.d("ErmahanAc", e.toString())
+                    }
+                    BitmapFactory.decodeStream(inputStream)
+                    Log.d("ErmahanAc", selectImage?.path.toString())
+                    iv_image_test.setImageURI(selectImage)
+                }
+            }
+        }
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
         IntArray
     ) {
-
         when (requestCode) {
             REQUEST_CODE_PERMISSIONS -> {
                 if (allPermissionsGranted()) {
@@ -183,6 +203,12 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                 grantResults[ZERO] = PackageManager.PERMISSION_GRANTED
             }
         }
+    }
+
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = IMAGE
+        activity?.startActivityFromFragment(this, intent, SELECT_PHOTO)
     }
 
     @SuppressLint("RestrictedApi")
@@ -245,6 +271,9 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                 }
             }
             true
+        }
+        cv_gallery.onClick {
+            openGallery()
         }
     }
 
