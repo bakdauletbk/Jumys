@@ -10,7 +10,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
+import android.view.MotionEvent
+import android.view.MotionEvent.ACTION_BUTTON_PRESS
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -24,6 +27,8 @@ import kz.smartideagroup.jumys.common.utils.*
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import kz.smartideagroup.jumys.manager.viewmodel.apply_claim.CameraCommonViewModel
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.sdk27.coroutines.onKey
+import org.jetbrains.anko.sdk27.coroutines.onTouch
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
@@ -239,7 +244,7 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                 override fun onVideoSaved(outputFileResults: VideoCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(videoFile)
                     val pathName = savedUri.toString().substring(SEVEN, savedUri.toString().length)
-                    readFileFromInternalStorage(savedUri.toString())
+//                    readFileFromInternalStorage(savedUri.toString())
                     commonViewModel.setMediaArrayList(pathName)
                     navigateTo(R.id.placingOrderFragment)
                 }
@@ -260,23 +265,23 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
         commonViewModel = ViewModelProvider(requireActivity())[CameraCommonViewModel::class.java]
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initListeners() {
         btn_camera_capture.setOnClickListener {
             takePhoto()
         }
         btn_camera_capture.setOnLongClickListener {
-            isRecording = when (isRecording) {
-                true -> {
+            startTimer()
+            startRecording()
+            true
+        }
+        btn_camera_capture.onTouch { v, event ->
+            when (event.action) {
+                MotionEvent.ACTION_UP -> {
                     stopRecording()
-                    false
-                }
-                false -> {
-                    startTimer()
-                    startRecording()
-                    true
+                    return@onTouch
                 }
             }
-            true
         }
         cv_gallery.onClick {
             openGallery()
