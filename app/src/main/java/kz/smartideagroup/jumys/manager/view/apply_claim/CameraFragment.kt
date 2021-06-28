@@ -5,9 +5,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -37,7 +35,6 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.collections.ArrayList
 
-
 class CameraFragment : BaseFragment(R.layout.fragment_camera) {
 
     companion object {
@@ -51,7 +48,6 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
     private var mCountDownTimer: CountDownTimer? = null
-    private val bundle = Bundle()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -121,18 +117,10 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     val msg = "Photo capture succeeded: $savedUri"
-
                     readFileFromInternalStorage(savedUri.toString())
-
                     val pathName = savedUri.toString().substring(SEVEN, savedUri.toString().length)
                     commonViewModel.setMediaArrayList(pathName)
                     navigateTo(R.id.placingOrderFragment)
-
-//                    bundle.putString(PUT_SAVED_URI, pathName)
-//                    requireActivity().findNavController(R.id.container)
-//                        .navigate(R.id.placingOrderFragment, bundle)
-
-                    Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
                 }
             })
@@ -189,9 +177,8 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
 
                     val pathName = selectImage?.path.toString()
                         .substring(FIVE, selectImage?.path.toString().length)
-                    bundle.putString(PUT_SAVED_URI, pathName)
-                    requireActivity().findNavController(R.id.container)
-                        .navigate(R.id.placingOrderFragment, bundle)
+                    commonViewModel.setMediaArrayList(pathName)
+                    navigateTo(R.id.placingOrderFragment)
 
                     iv_image_test.setImageURI(selectImage)
                 }
@@ -259,17 +246,10 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
 
                 override fun onVideoSaved(outputFileResults: VideoCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(videoFile)
-                    val msg = "Video capture succeeded: $savedUri"
                     val pathName = savedUri.toString().substring(SEVEN, savedUri.toString().length)
                     readFileFromInternalStorage(savedUri.toString())
                     commonViewModel.setMediaArrayList(pathName)
                     navigateTo(R.id.placingOrderFragment)
-//                    bundle.putString(PUT_SAVED_URI, savedUri.toString())
-//                    requireActivity().findNavController(R.id.container)
-//                        .navigate(R.id.placingOrderFragment, bundle)
-
-                    Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
-                    Log.d("Video", msg)
                 }
             })
     }

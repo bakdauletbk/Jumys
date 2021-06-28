@@ -27,7 +27,10 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
 
     fun addList(mediaList: List<String>) {
         this.mediaList.clear()
-        this.mediaList.addAll(mediaList)
+        val arrayList = ArrayList<String>()
+        arrayList.addAll(mediaList)
+        arrayList.add("")//Не убрать last item (add media button)
+        this.mediaList.addAll(arrayList)
         notifyDataSetChanged()
     }
 
