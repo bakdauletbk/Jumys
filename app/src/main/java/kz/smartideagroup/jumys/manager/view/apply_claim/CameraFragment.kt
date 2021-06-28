@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.exifinterface.media.ExifInterface
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_camera.*
 import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.common.utils.*
@@ -252,6 +253,7 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                     val savedUri = Uri.fromFile(videoFile)
                     val msg = "Video capture succeeded: $savedUri"
 
+                    readFileFromInternalStorage(savedUri.toString())
                     bundle.putString(PUT_SAVED_URI, savedUri.toString())
                     requireActivity().findNavController(R.id.container)
                         .navigate(R.id.placingOrderFragment, bundle)
@@ -264,6 +266,7 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
 
     @SuppressLint("RestrictedApi")
     private fun stopRecording() {
+        pb_recording_timer.visibility = View.GONE
         videoCapture.stopRecording()
     }
 
@@ -296,36 +299,8 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
 
     private fun readFileFromInternalStorage(path: String) {
         iv_image_test.visibility = View.VISIBLE
-
         val pathName = path.substring(SEVEN, path.length)
-
-        var bitmap =
-            BitmapFactory.decodeFile(pathName)
-
-        try {
-            val exif =
-                ExifInterface(pathName)
-            val orientation: Int = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ONE)
-
-            val matrix = Matrix()
-            when (orientation) {
-                SIX -> matrix.postRotate(DEGREES_90)
-                THREE -> matrix.postRotate(DEGREES_180)
-                EIGHT -> matrix.postRotate(DEGREES_270)
-            }
-            bitmap = Bitmap.createBitmap(
-                bitmap,
-                ZERO,
-                ZERO,
-                bitmap.width,
-                bitmap.height,
-                matrix,
-                true
-            ) // rotating bitmap
-        } catch (e: java.lang.Exception) {
-        }
-
-        iv_image_test.setImageBitmap(bitmap)
+        Glide.with(requireActivity()).load(pathName).into(iv_image_test)
     }
 
     private fun startTimer() {

@@ -8,7 +8,11 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kz.smartideagroup.jumys.R
+import kz.smartideagroup.jumys.common.utils.FOUR
+import kz.smartideagroup.jumys.common.utils.MP4
+import kz.smartideagroup.jumys.common.utils.ONE
 import kz.smartideagroup.jumys.manager.view.apply_claim.PlacingOrderFragment
+
 
 class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
 
@@ -33,17 +37,30 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(mediaList = mediaList[position], callback)
+        holder.bind(media = mediaList[position], callback, position, mediaList.size - ONE)
     }
 
     override fun getItemCount(): Int = mediaList.size
 
     class ViewHolder(root: View) : RecyclerView.ViewHolder(root) {
         private val ivMedia = root.findViewById<ImageView>(R.id.iv_media)
+        private val ivRemove = root.findViewById<ImageView>(R.id.iv_remove)
+        private val ivVideoPlay = root.findViewById<ImageView>(R.id.iv_video_play)
 
-        @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
-        fun bind(mediaList: String, callback: PlacingOrderFragment) {
-            Glide.with(callback.requireActivity()).load(mediaList).into(ivMedia)
+        @SuppressLint("UseCompatLoadingForDrawables")
+        fun bind(media: String, callback: PlacingOrderFragment, position: Int, mediaListSize: Int) {
+            when (position == mediaListSize) {
+                true -> {
+                    ivMedia.background = callback.resources.getDrawable(R.drawable.ic_add_media)
+                    ivRemove.visibility = View.GONE
+                }
+                false -> {
+                    if (media.takeLast(FOUR) == MP4) ivVideoPlay.visibility =
+                        View.VISIBLE else ivVideoPlay.visibility = View.GONE
+                    Glide.with(callback.requireActivity()).load(media).into(ivMedia)
+                }
+            }
+
         }
     }
 
