@@ -1,7 +1,6 @@
 package kz.smartideagroup.jumys.manager.view.apply_claim.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,6 @@ import kz.smartideagroup.jumys.common.utils.ONE
 import kz.smartideagroup.jumys.manager.view.apply_claim.PlacingOrderFragment
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-
 class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
 
     private var callback: PlacingOrderFragment
@@ -29,6 +27,7 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
 
     fun addList(mediaList: List<String>) {
         this.mediaList.clear()
+        notifyDataSetChanged()
         val arrayList = ArrayList<String>()
         arrayList.addAll(mediaList)
         arrayList.add("")//Не убрать last item (add media button)

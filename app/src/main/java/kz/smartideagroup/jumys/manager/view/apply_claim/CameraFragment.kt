@@ -70,7 +70,6 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
 
         outputDirectory = getOutputDirectory()
         cameraExecutor = Executors.newSingleThreadExecutor()
-
     }
 
     override fun onDestroy() {
@@ -170,15 +169,10 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                     } catch (e: FileNotFoundException) {
                     }
                     BitmapFactory.decodeStream(inputStream)
-                    Log.d("ErmahanAc", selectImage?.path.toString())
-
                     val pathName = selectImage?.path.toString()
                         .substring(FIVE, selectImage?.path.toString().length)
-                    Log.d("Eraksmfa", pathName.toString())
                     commonViewModel.setMediaArrayList(pathName)
                     navigateTo(R.id.placingOrderFragment)
-
-//                    iv_image_test.setImageURI(selectImage)
                 }
             }
         }
@@ -257,20 +251,9 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
         videoCapture.stopRecording()
     }
 
-    override fun onDestroyView() {
-        Log.d(TAG, "onDestroyView: ")
-        super.onDestroyView()
-    }
-
     override fun onPause() {
         pb_recording_timer.visibility = View.GONE
-        Log.d(TAG, "onPause: ")
         super.onPause()
-    }
-
-    override fun onStop() {
-        Log.d(TAG, "onStop: ")
-        super.onStop()
     }
 
     private fun initViewModel() {

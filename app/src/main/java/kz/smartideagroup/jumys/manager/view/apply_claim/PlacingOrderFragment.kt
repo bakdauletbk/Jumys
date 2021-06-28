@@ -25,7 +25,6 @@ class PlacingOrderFragment : BaseFragment(R.layout.fragment_placing_order) {
 
     private lateinit var commonViewModel: CameraCommonViewModel
 
-    private var mediaList = ArrayList<String>()
     private var alertDialog: Dialog? = null
     private val mediaAdapter: MediaAdapter =
         MediaAdapter(this)
@@ -46,6 +45,9 @@ class PlacingOrderFragment : BaseFragment(R.layout.fragment_placing_order) {
         commonViewModel.mediaList.observe(viewLifecycleOwner, {
             Log.d("ErmahanList", it.toString())
             mediaAdapter.addList(it)
+        })
+        commonViewModel.sum.observe(viewLifecycleOwner,{
+            et_sum.setText(it)
         })
     }
 
@@ -70,11 +72,13 @@ class PlacingOrderFragment : BaseFragment(R.layout.fragment_placing_order) {
     }
 
     fun navigateToCamera() {
+        commonViewModel.setSum(et_sum.text.toString())
         navigateTo(R.id.navigation)
     }
 
     fun removeItemMediaList(position: Int) {
         commonViewModel.removeItem(position)
+        navigateTo(R.id.placingOrderFragment)
     }
 
     fun previewMediaAlert(path: String) {

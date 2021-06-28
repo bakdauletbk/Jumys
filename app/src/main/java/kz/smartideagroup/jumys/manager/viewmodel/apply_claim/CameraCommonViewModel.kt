@@ -8,6 +8,16 @@ class CameraCommonViewModel(application: Application) : AndroidViewModel(applica
 
     val mediaList = MutableLiveData<ArrayList<String>>()
     private val mediaArrayList = ArrayList<String>()
+    val sum = MutableLiveData<String>()
+    val phoneNumber = MutableLiveData<String>()
+
+    fun setSum(sum: String) {
+        this.sum.postValue(sum)
+    }
+
+    fun setPhoneNumber(number: String) {
+        this.phoneNumber.postValue(number)
+    }
 
     fun setMediaArrayList(media: String) {
         this.mediaArrayList.add(media)
