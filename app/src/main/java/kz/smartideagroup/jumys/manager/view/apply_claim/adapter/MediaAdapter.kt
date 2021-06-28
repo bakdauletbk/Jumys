@@ -1,12 +1,14 @@
 package kz.smartideagroup.jumys.manager.view.apply_claim.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.item_media.view.*
 import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.common.utils.FOUR
 import kz.smartideagroup.jumys.common.utils.MP4
@@ -42,6 +44,9 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(media = mediaList[position], callback, position, mediaList.size - ONE)
+        holder.itemView.iv_remove.onClick {
+            callback.removeItemMediaList(position)
+        }
     }
 
     override fun getItemCount(): Int = mediaList.size

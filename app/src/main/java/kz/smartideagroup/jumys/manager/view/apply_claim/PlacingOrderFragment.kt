@@ -10,8 +10,7 @@ import android.view.View
 import android.view.Window
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_placing_order.*
 import kz.smartideagroup.jumys.R
@@ -45,9 +44,8 @@ class PlacingOrderFragment : BaseFragment(R.layout.fragment_placing_order) {
 
     private fun initObservers() {
         commonViewModel.mediaList.observe(viewLifecycleOwner, {
-            Log.d("Erma", "initObservers: $it")
-            mediaList.addAll(it)
-            mediaAdapter.addList(mediaList)
+            Log.d("ErmahanList", it.toString())
+            mediaAdapter.addList(it)
         })
     }
 
@@ -62,12 +60,21 @@ class PlacingOrderFragment : BaseFragment(R.layout.fragment_placing_order) {
     private fun initRecyclerView() {
         rv_media.apply {
             adapter = mediaAdapter
-            layoutManager = StaggeredGridLayoutManager(4, LinearLayoutManager.VERTICAL)
+            layoutManager = GridLayoutManager(
+                requireContext(),
+                FOUR,
+                GridLayoutManager.VERTICAL,
+                false
+            )
         }
     }
 
     fun navigateToCamera() {
         navigateTo(R.id.navigation)
+    }
+
+    fun removeItemMediaList(position: Int) {
+        commonViewModel.removeItem(position)
     }
 
     fun previewMediaAlert(path: String) {
@@ -79,7 +86,7 @@ class PlacingOrderFragment : BaseFragment(R.layout.fragment_placing_order) {
         val imagePreview = alertDialog!!.findViewById<ImageView>(R.id.image_preview)
         val videoPreview = alertDialog!!.findViewById<VideoView>(R.id.videoView)
 
-        when (path.takeLast(FOUR) == MP4) {
+        when (path.takeLast(FOUR) == MP4) { // Mp4 and Jpg format
             true -> {
                 imagePreview.visibility = View.GONE
                 videoPreview.visibility =

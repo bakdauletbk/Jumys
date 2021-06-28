@@ -254,8 +254,23 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
 
     @SuppressLint("RestrictedApi")
     private fun stopRecording() {
-        pb_recording_timer.visibility = View.GONE
         videoCapture.stopRecording()
+    }
+
+    override fun onDestroyView() {
+        Log.d(TAG, "onDestroyView: ")
+        super.onDestroyView()
+    }
+
+    override fun onPause() {
+        pb_recording_timer.visibility = View.GONE
+        Log.d(TAG, "onPause: ")
+        super.onPause()
+    }
+
+    override fun onStop() {
+        Log.d(TAG, "onStop: ")
+        super.onStop()
     }
 
     private fun initViewModel() {
@@ -297,23 +312,29 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
         var i = ZERO
 
         pb_recording_timer.progress = i
-
+        pb_recording_timer.visibility = View.VISIBLE
         mCountDownTimer = object : CountDownTimer(FIFTEEN, COUNT_DOWN_INTERVAL) {
             override fun onTick(millisUntilFinished: Long) {
-                pb_recording_timer.visibility = View.VISIBLE
-                i++
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                    pb_recording_timer.setProgress(i, true)
-                } else {
-                    pb_recording_timer.progress = i
+                try {
+                    i++
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                        pb_recording_timer.setProgress(i, true)
+                    } else {
+                        pb_recording_timer.progress = i
+                    }
+                } catch (e: Exception) {
+                    mCountDownTimer?.onFinish()
                 }
             }
 
             override fun onFinish() {
+                when (pb_recording_timer != null) {
+                    true -> {
+                        pb_recording_timer.visibility = View.GONE
+                    }
+                }
                 stopRecording()
-                pb_recording_timer.visibility = View.GONE
             }
-
         }.start()
     }
 
