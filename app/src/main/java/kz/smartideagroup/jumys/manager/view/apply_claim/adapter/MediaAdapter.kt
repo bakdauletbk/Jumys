@@ -65,6 +65,9 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
                     if (media.takeLast(FOUR) == MP4) ivVideoPlay.visibility =
                         View.VISIBLE else ivVideoPlay.visibility = View.GONE
                     Glide.with(callback.requireActivity()).load(media).into(ivMedia)
+                    itemView.onClick {
+                        callback.previewMediaAlert(media)
+                    }
                 }
             }
 

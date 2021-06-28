@@ -16,9 +16,7 @@ import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.exifinterface.media.ExifInterface
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_camera.*
 import kz.smartideagroup.jumys.R
@@ -33,7 +31,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import kotlin.collections.ArrayList
 
 class CameraFragment : BaseFragment(R.layout.fragment_camera) {
 
@@ -177,10 +174,11 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
 
                     val pathName = selectImage?.path.toString()
                         .substring(FIVE, selectImage?.path.toString().length)
+                    Log.d("Eraksmfa", pathName.toString())
                     commonViewModel.setMediaArrayList(pathName)
                     navigateTo(R.id.placingOrderFragment)
 
-                    iv_image_test.setImageURI(selectImage)
+//                    iv_image_test.setImageURI(selectImage)
                 }
             }
         }
