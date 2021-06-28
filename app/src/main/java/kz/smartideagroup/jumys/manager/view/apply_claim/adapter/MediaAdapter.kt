@@ -12,6 +12,7 @@ import kz.smartideagroup.jumys.common.utils.FOUR
 import kz.smartideagroup.jumys.common.utils.MP4
 import kz.smartideagroup.jumys.common.utils.ONE
 import kz.smartideagroup.jumys.manager.view.apply_claim.PlacingOrderFragment
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 
 class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
@@ -53,6 +54,9 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
                 true -> {
                     ivMedia.background = callback.resources.getDrawable(R.drawable.ic_add_media)
                     ivRemove.visibility = View.GONE
+                    itemView.onClick {
+                        callback.navigateToCamera()
+                    }
                 }
                 false -> {
                     if (media.takeLast(FOUR) == MP4) ivVideoPlay.visibility =

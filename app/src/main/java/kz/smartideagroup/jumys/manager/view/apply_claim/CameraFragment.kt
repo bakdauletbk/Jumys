@@ -19,12 +19,14 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.exifinterface.media.ExifInterface
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_camera.*
 import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.common.utils.*
 import kz.smartideagroup.jumys.common.views.BaseFragment
+import kz.smartideagroup.jumys.manager.viewmodel.apply_claim.CameraCommonViewModel
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import java.io.File
 import java.io.FileNotFoundException
@@ -33,6 +35,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import kotlin.collections.ArrayList
 
 
 class CameraFragment : BaseFragment(R.layout.fragment_camera) {
@@ -41,6 +44,7 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
         private const val TAG = "CameraXBasic"
     }
 
+    private lateinit var commonViewModel: CameraCommonViewModel
     private var isRecording = false
     private val videoCapture = VideoCapture.Builder().build()
     private var imageCapture = ImageCapture.Builder().build()
@@ -117,12 +121,16 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     val msg = "Photo capture succeeded: $savedUri"
+
                     readFileFromInternalStorage(savedUri.toString())
 
                     val pathName = savedUri.toString().substring(SEVEN, savedUri.toString().length)
-                    bundle.putString(PUT_SAVED_URI, pathName)
-                    requireActivity().findNavController(R.id.container)
-                        .navigate(R.id.placingOrderFragment, bundle)
+                    commonViewModel.setMediaArrayList(pathName)
+                    navigateTo(R.id.placingOrderFragment)
+
+//                    bundle.putString(PUT_SAVED_URI, pathName)
+//                    requireActivity().findNavController(R.id.container)
+//                        .navigate(R.id.placingOrderFragment, bundle)
 
                     Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
@@ -252,11 +260,13 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                 override fun onVideoSaved(outputFileResults: VideoCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(videoFile)
                     val msg = "Video capture succeeded: $savedUri"
-
+                    val pathName = savedUri.toString().substring(SEVEN, savedUri.toString().length)
                     readFileFromInternalStorage(savedUri.toString())
-                    bundle.putString(PUT_SAVED_URI, savedUri.toString())
-                    requireActivity().findNavController(R.id.container)
-                        .navigate(R.id.placingOrderFragment, bundle)
+                    commonViewModel.setMediaArrayList(pathName)
+                    navigateTo(R.id.placingOrderFragment)
+//                    bundle.putString(PUT_SAVED_URI, savedUri.toString())
+//                    requireActivity().findNavController(R.id.container)
+//                        .navigate(R.id.placingOrderFragment, bundle)
 
                     Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                     Log.d("Video", msg)
@@ -270,7 +280,9 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
         videoCapture.stopRecording()
     }
 
-    private fun initViewModel() {}
+    private fun initViewModel() {
+        commonViewModel = ViewModelProvider(requireActivity())[CameraCommonViewModel::class.java]
+    }
 
     private fun initListeners() {
         btn_camera_capture.setOnClickListener {
