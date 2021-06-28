@@ -17,13 +17,10 @@ import kotlinx.android.synthetic.main.fragment_placing_order.*
 import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.common.utils.FOUR
 import kz.smartideagroup.jumys.common.utils.MP4
-import kz.smartideagroup.jumys.common.utils.PUT_SAVED_URI
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import kz.smartideagroup.jumys.manager.view.apply_claim.adapter.MediaAdapter
 import kz.smartideagroup.jumys.manager.viewmodel.apply_claim.CameraCommonViewModel
 import org.jetbrains.anko.sdk27.coroutines.onClick
-import java.util.logging.Level
-import java.util.logging.Level.parse
 
 class PlacingOrderFragment : BaseFragment(R.layout.fragment_placing_order) {
 
@@ -91,7 +88,6 @@ class PlacingOrderFragment : BaseFragment(R.layout.fragment_placing_order) {
                 // Создание MediaController
                 val mediaController = MediaController(requireContext())
                 mediaController.setAnchorView(mediaController)
-                // Установка MediaController и URI, затем запуск videoView
                 videoPreview.setMediaController(mediaController)
                 videoPreview.setVideoURI(Uri.parse(path))
                 videoPreview.requestFocus()
@@ -118,10 +114,5 @@ class PlacingOrderFragment : BaseFragment(R.layout.fragment_placing_order) {
             LinearLayout.LayoutParams.MATCH_PARENT
         )
     }
-
-
-//    private fun startVideoPlayer(path: String) {
-//
-//    }
 
 }

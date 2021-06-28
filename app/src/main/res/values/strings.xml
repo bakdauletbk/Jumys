@@ -146,5 +146,6 @@
     <string name="service_budget">Бюджет за услугу</string>
     <string name="enter_the_amount">Ввести сумму</string>
     <string name="publish">Опубликовать</string>
+    <string name="camera_prompt">Нажмите один раз на иконку, чтобы сделать фото или удерживайте для съемки видео.</string>
 
 </resources>
