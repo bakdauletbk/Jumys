@@ -367,30 +367,6 @@
             app:layout_constraintTop_toBottomOf="@+id/line12"
             tools:ignore="Autofill" />
 
-        <LinearLayout
-            android:id="@+id/bin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_5dp"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/register_number">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/bin"
-                android:textColor="@color/text_gray"
-                android:textSize="@dimen/dimens_12sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/z"
-                android:textColor="@color/red" />
-        </LinearLayout>
-
         <EditText
             android:id="@+id/enter_bin"
             android:layout_width="match_parent"
@@ -408,8 +384,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bin"
-            tools:ignore="Autofill" />
+            tools:ignore="Autofill,MissingConstraints" />
 
         <LinearLayout
             android:id="@+id/line14"
@@ -433,6 +408,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/z"
                 android:textColor="@color/red" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -452,6 +428,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_plus"
                 tools:ignore="ContentDescription" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -476,6 +453,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/z"
                 android:textColor="@color/red" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -495,6 +473,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_plus"
                 tools:ignore="ContentDescription" />
+
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -502,19 +481,20 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dimens_33dp"
-            android:layout_marginBottom="@dimen/dimens_25dp"
-            android:layout_marginTop="@dimen/dimens_50dp"
+            android:layout_marginTop="@dimen/dimens_30dp"
             android:paddingVertical="@dimen/dimens_15dp"
             android:text="@string/next"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:layout_marginBottom="@dimen/dimens_30dp"
             app:cornerRadius="@dimen/dimens_15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view" />
+            app:layout_constraintTop_toBottomOf="@+id/iin" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

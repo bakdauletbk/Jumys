@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_sms_code_manager.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -91,7 +90,7 @@ class SmsCodeManagerFragment : BaseFragment(R.layout.fragment_sms_code_manager) 
         val smsCode = codeInputView.code.toString()
         val verificationRequest = VerificationRequest(phone = phone,
             activationcode = smsCode,
-            role = getString(R.string.master))
+            role = getString(R.string.client))
         when (Validators.validateSMS(smsCode)) {
             true -> sendVerification(verificationRequest)
             false -> codeInputView.error = getString(R.string.enter_sms)

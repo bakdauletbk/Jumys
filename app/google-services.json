@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "469713229785",
+    "project_id": "jobitkz-a4b51",
+    "storage_bucket": "jobitkz-a4b51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469713229785:android:4993fc6aabffb5619d6bc8",
+        "android_client_info": {
+          "package_name": "kz.smartideagroup.jumys"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "469713229785-k1i0ar688qonk1nq6qd41vfhcm8om9bo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kz.smartideagroup.jumys",
+            "certificate_hash": "e1eb657a5885e5be2c334b97a974e00dd3f03ab7"
+          }
+        },
+        {
+          "client_id": "469713229785-9m22vt5c1q5kcgp4em3t7f0e18ijnmbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNYpcXbxRchxV6xaHCBG0G_aUARSxueoo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "469713229785-9m22vt5c1q5kcgp4em3t7f0e18ijnmbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

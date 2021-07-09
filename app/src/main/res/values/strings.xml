@@ -20,7 +20,7 @@
     <string name="enter_your_phone_number">Введите номер телефона</string>
     <string name="by_clicking_next_you_agree_to">Нажимая “Далее”, вы соглашаетесь с</string>
     <string name="service_rules">правилами сервиса</string>
-    <string name="mask_phone">+7 (</string>
+    <string name="mask_phone">+7(</string>
     <string name="next">Далее</string>
     <string name="confirm_finish">Нажмите ещё раз для выхода</string>
     <string name="skip_registration">Пропустить регистрацию</string>

@@ -1,6 +1,6 @@
 package kz.smartideagroup.jumys.common.remote
 
-import kz.smartideagroup.jumys.authorization.client.model.SignUpClientRequest
+import kz.smartideagroup.jumys.authorization.client.model.request.SignUpClientRequest
 import kz.smartideagroup.jumys.authorization.manager.model.request.AuthSmsRequest
 import kz.smartideagroup.jumys.authorization.manager.model.request.SignInRequest
 import kz.smartideagroup.jumys.authorization.manager.model.request.SignUpManagerRequest
@@ -52,6 +52,6 @@ interface NetworkService {
     suspend fun signUpClient(
         @Header("appVer") appVer: String,
         @Body signUpClientRequest: SignUpClientRequest,
-    )
+    ): Response<SignUpManagerResponse>
 
 }
