@@ -3,18 +3,20 @@ package kz.smartideagroup.jumys.manager.view.apply_claim
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Base64
 import android.util.Log
 import android.view.MotionEvent
-import android.view.MotionEvent.ACTION_BUTTON_PRESS
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
@@ -27,11 +29,8 @@ import kz.smartideagroup.jumys.common.utils.*
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import kz.smartideagroup.jumys.manager.viewmodel.apply_claim.CameraCommonViewModel
 import org.jetbrains.anko.sdk27.coroutines.onClick
-import org.jetbrains.anko.sdk27.coroutines.onKey
 import org.jetbrains.anko.sdk27.coroutines.onTouch
-import java.io.File
-import java.io.FileNotFoundException
-import java.io.InputStream
+import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
@@ -184,8 +183,9 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int, permissions: Array<String>, grantResults:
-        IntArray
+        requestCode: Int, permissions: Array<String>,
+        grantResults:
+        IntArray,
     ) {
         when (requestCode) {
             REQUEST_CODE_PERMISSIONS -> {
@@ -241,10 +241,12 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
                     Log.e("Video", "Video capture failed: $message")
                 }
 
+                @RequiresApi(Build.VERSION_CODES.O)
                 override fun onVideoSaved(outputFileResults: VideoCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(videoFile)
                     val pathName = savedUri.toString().substring(SEVEN, savedUri.toString().length)
 //                    readFileFromInternalStorage(savedUri.toString())
+                    commonViewModel.setVideoBase(convertToByteArray(savedUri))
                     commonViewModel.setMediaArrayList(pathName)
                     navigateTo(R.id.placingOrderFragment)
                 }
@@ -326,5 +328,49 @@ class CameraFragment : BaseFragment(R.layout.fragment_camera) {
         }.start()
     }
 
+    fun convertVideoToBytes(context: Context?, uri: Uri): ByteArray? {
+        var videoBytes: ByteArray? = null
+        try { //  w  w w  . j ava 2s . c  o m
+            val baos = ByteArrayOutputStream()
+            val fis = FileInputStream(File(uri.toString()))
+            val buf = ByteArray(1024)
+            var n: Int
+            while (-1 != fis.read(buf).also { n = it }) baos.write(buf, 0, n)
+            videoBytes = baos.toByteArray()
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return videoBytes
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun convertToByteArray(path: Uri): String {
+        var inputStream: InputStream? = null
+        try {
+            inputStream = activity?.contentResolver?.openInputStream(path)
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        }
+        val bufferSize = BUFFER_SIZE
+        val buffer = ByteArray(bufferSize)
+        val byteBuffer = ByteArrayOutputStream()
+        var len = ZERO
+        try {
+            while (inputStream!!.read(buffer).also { len = it } != MINUS_ONE) {
+                byteBuffer.write(buffer, ZERO, len)
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        println("converted!")
+        var videoData = ""
+        //Converting bytes into base64
+        videoData = Base64.encodeToString(byteBuffer.toByteArray(), Base64.DEFAULT)
+        Log.d("VideoData**>  ", videoData)
+
+        return videoData
+    }
 
 }

@@ -9,7 +9,6 @@
         android:id="@+id/ll_questionnaire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimens_16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,6 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimens_16dp"
             android:layout_marginTop="@dimen/dimens_50dp"
             android:text="@string/questionnaire"
             android:textColor="@color/black"
@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimens_7dp"
             android:text="@string/fill_out_a_questionnaire"
+            android:layout_marginHorizontal="@dimen/dimens_16dp"
             android:textColor="@color/text_grays"
             android:textSize="@dimen/dimens_12sp"
             android:textStyle="normal" />

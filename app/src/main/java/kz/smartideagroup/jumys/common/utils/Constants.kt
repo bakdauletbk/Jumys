@@ -15,7 +15,11 @@ const val PADDING_BOTTOM = 5
 const val PADDING = 20f
 const val PAGE_MARGIN = 12f
 const val TIME_MILLIS = 4000L
-const val PUT_SAVED_URI = "PUT_SAVED_URI"
+
+//RESPONSE STATUS
+const val RESPONSE_SUCCESS = 200
+const val RESPONSE_UNAUTHORIZED = 401
+const val RESPONSE_UPDATE_APP = 406
 
 //Bitmap
 const val DEGREES_90 = 90f
@@ -24,6 +28,8 @@ const val DEGREES_270 = 270f
 
 const val ZERO = 0
 const val ONE = 1
+const val MINUS_ONE = -1
+const val BUFFER_SIZE = 1024
 const val TWO = 2
 const val THREE = 3
 const val FOUR = 4
@@ -42,3 +48,8 @@ const val JPG = ".jpg"
 
 const val SELECT_PHOTO = 100
 const val IMAGE_VIDEO = "image/* video/*"
+
+const val URI_PLAY_MARKET = "market://details?id="
+const val URI_APP = "https://play.google.com/store/apps/details?id="
+
+const val PUT_PHONE = "PUT_PHONE"

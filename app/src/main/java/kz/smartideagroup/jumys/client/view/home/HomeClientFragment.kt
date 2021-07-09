@@ -15,7 +15,6 @@ import kz.smartideagroup.jumys.client.view.home.adapter.AdviceAdapter
 import kz.smartideagroup.jumys.client.view.home.adapter.CategoryAdapter
 import kz.smartideagroup.jumys.client.view.home.adapter.HistoryAdapter
 import kz.smartideagroup.jumys.client.viewmodel.home.HomeClientViewModel
-import kz.smartideagroup.jumys.common.utils.ONE
 import kz.smartideagroup.jumys.common.utils.TWO
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -94,7 +93,7 @@ class HomeClientFragment : BaseFragment(R.layout.fragment_home_client) {
             setCategoryList(it)
         })
         viewModel.adviceList.observe(viewLifecycleOwner, {
-            setAddviceList(it)
+            setAddViceList(it)
         })
         viewModel.historyList.observe(viewLifecycleOwner, {
             setHistoryList(it)
@@ -105,7 +104,7 @@ class HomeClientFragment : BaseFragment(R.layout.fragment_home_client) {
         historyAdapter.addList(it!!)
     }
 
-    private fun setAddviceList(adviceList: List<AdviceResponse>?) {
+    private fun setAddViceList(adviceList: List<AdviceResponse>?) {
         adviceAdapter.addList(adviceList!!)
     }
 

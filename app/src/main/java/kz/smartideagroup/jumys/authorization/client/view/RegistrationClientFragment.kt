@@ -43,7 +43,6 @@ class RegistrationClientFragment : BaseFragment(R.layout.fragment_registration_c
             override fun onTabSelected(tab: TabLayout.Tab) {
                 vp_questionnaire.currentItem = tab.position
             }
-
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
@@ -60,6 +59,5 @@ class RegistrationClientFragment : BaseFragment(R.layout.fragment_registration_c
         layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT
         layout.layoutParams = layoutParams
     }
-
 
 }

@@ -72,16 +72,17 @@
         app:layout_constraintTop_toBottomOf="@id/linearLayout">
 
         <com.vicmikhailau.maskededittext.MaskedEditText
+            android:id="@+id/et_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
-            android:inputType="number"
             android:hint="@string/mask_phone"
+            android:inputType="number"
             android:textColor="@color/black"
             android:textColorHint="@color/text_gray"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:mask="+7 (***)-***-**-**" />
+            app:mask="+7(***)-***-**-**" />
     </LinearLayout>
 
     <TextView
@@ -114,5 +115,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="#54000000"
+        android:gravity="center">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_white_foreground" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

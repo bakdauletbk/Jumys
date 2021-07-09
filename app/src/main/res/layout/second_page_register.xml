@@ -503,7 +503,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dimens_33dp"
             android:layout_marginBottom="@dimen/dimens_25dp"
-            android:layout_marginTop="132dp"
+            android:layout_marginTop="@dimen/dimens_50dp"
             android:paddingVertical="@dimen/dimens_15dp"
             android:text="@string/next"
             android:textAllCaps="false"

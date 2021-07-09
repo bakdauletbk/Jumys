@@ -13,10 +13,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_placing_order.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.common.utils.FOUR
 import kz.smartideagroup.jumys.common.utils.MP4
 import kz.smartideagroup.jumys.common.views.BaseFragment
+import kz.smartideagroup.jumys.manager.model.request.apply_claim.RequestWorkUpload
 import kz.smartideagroup.jumys.manager.view.apply_claim.adapter.MediaAdapter
 import kz.smartideagroup.jumys.manager.viewmodel.apply_claim.CameraCommonViewModel
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -24,7 +28,6 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
 class PlacingOrderFragment : BaseFragment(R.layout.fragment_placing_order) {
 
     private lateinit var commonViewModel: CameraCommonViewModel
-
     private var alertDialog: Dialog? = null
     private val mediaAdapter: MediaAdapter =
         MediaAdapter(this)
@@ -42,12 +45,41 @@ class PlacingOrderFragment : BaseFragment(R.layout.fragment_placing_order) {
     }
 
     private fun initObservers() {
+        commonViewModel.isError.observe(viewLifecycleOwner, {
+            setLoading(false)
+            errorDialog(getString(R.string.error_no_internet_msg))
+        })
+        commonViewModel.isSuccess.observe(viewLifecycleOwner, {
+            when (it) {
+                true -> {
+                    setLoading(false)
+                    Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
+                }
+                false -> {
+                    setLoading(false)
+                    errorDialog(getString(R.string.error_failed_connection_to_server))
+                }
+            }
+        })
         commonViewModel.mediaList.observe(viewLifecycleOwner, {
             Log.d("ErmahanList", it.toString())
             mediaAdapter.addList(it)
         })
-        commonViewModel.sum.observe(viewLifecycleOwner,{
+        commonViewModel.sum.observe(viewLifecycleOwner, {
             et_sum.setText(it)
+        })
+        commonViewModel.videoBase.observe(viewLifecycleOwner, {
+            Log.d("ErmahanVideoBase", "asdas")
+            Log.d("ErmahanVideoBase", it.toString())
+            val requestWorkUpload = RequestWorkUpload( work = 2,video = it.toString())
+            setLoading(true)
+            CoroutineScope(Dispatchers.IO).launch {
+                commonViewModel.setVideoUpload(requestWorkUpload)
+            }
+            Log.d("ErmahanVideoBase", "easa")
+
+// TODO <-------------------------------------------------------------------->
+
         })
     }
 
@@ -73,7 +105,7 @@ class PlacingOrderFragment : BaseFragment(R.layout.fragment_placing_order) {
 
     fun navigateToCamera() {
         commonViewModel.setSum(et_sum.text.toString())
-        navigateTo(R.id.navigation)
+        navigateTo(R.id.cameraFragment)
     }
 
     fun removeItemMediaList(position: Int) {
@@ -124,6 +156,10 @@ class PlacingOrderFragment : BaseFragment(R.layout.fragment_placing_order) {
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT
         )
+    }
+
+    private fun setLoading(loading: Boolean) {
+        loadingView.visibility = if (loading) View.VISIBLE else View.GONE
     }
 
 }

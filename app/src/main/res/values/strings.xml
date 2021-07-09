@@ -52,7 +52,9 @@
 
 
     //Обработка ошибки
+    <string name="error_unknown_title">Что-то пошло не так…</string>
     <string name="error_no_internet_title">Отсутствует интернет соединение</string>
+    <string name="error_failed_connection_to_server">Не удалось установить соединение с сервером!</string>
     <string name="error_unknown_body">Пожалуйста проверьте интернет соединени или попробуйте позднее</string>
     <string name="error_no_internet_msg">Пожалуйста проверьте ваше интернет соединение и попробуйте ещё раз</string>
     <string name="apply">Подать заявку</string>
@@ -147,5 +149,13 @@
     <string name="enter_the_amount">Ввести сумму</string>
     <string name="publish">Опубликовать</string>
     <string name="camera_prompt">Нажмите один раз на иконку, чтобы сделать фото или удерживайте для съемки видео.</string>
+
+    <string name="you_are_logged_in_under_your_account_on_another_device">Под вашим Аккаунтом вошли на другом устройстве!</string>
+    <string name="our_application_has_been_updated_please_update">Вышло обновление нашего приложения. Пожалуйста обновите!</string>
+    <string name="enter_sms">Введите смс код!</string>
+    <string name="master">master</string>
+    <string name="client">client</string>
+
+
 
 </resources>
