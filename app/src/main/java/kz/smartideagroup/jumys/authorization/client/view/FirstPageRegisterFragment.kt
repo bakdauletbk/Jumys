@@ -2,17 +2,36 @@ package kz.smartideagroup.jumys.authorization.client.view
 
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.first_page_register.*
+import kotlinx.android.synthetic.main.first_page_register.btn_next
+import kotlinx.android.synthetic.main.first_page_register.et_name
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kz.smartideagroup.jumys.R
+import kz.smartideagroup.jumys.authorization.client.model.request.SignUpClientRequest
 import kz.smartideagroup.jumys.authorization.client.viewmodel.FirstPageViewModel
+import kz.smartideagroup.jumys.common.helpers.validateDays
+import kz.smartideagroup.jumys.common.helpers.validateIin
+import kz.smartideagroup.jumys.common.helpers.validateYear
+import kz.smartideagroup.jumys.common.utils.PUT_PHONE
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class FirstPageRegisterFragment : BaseFragment(R.layout.first_page_register) {
 
     private lateinit var viewModel: FirstPageViewModel
+
+    private var isValidateName = false
+    private var isValidateSureName = false
+    private var isValidateFatherLand = false
+    private var isValidateDays = false
+    private var isValidateMonth = false
+    private var isValidateYears = false
+    private var isValidateIin = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,9 +50,10 @@ class FirstPageRegisterFragment : BaseFragment(R.layout.first_page_register) {
         })
         viewModel.isSuccess.observe(viewLifecycleOwner, {
             when (it) {
-                true -> {
-                }
+                true -> navigateTo(R.id.homeClientFragment)
                 false -> {
+                    setLoading(false)
+                    errorDialog(getString(R.string.error_failed_connection_to_server))
                 }
             }
         })
@@ -67,12 +87,69 @@ class FirstPageRegisterFragment : BaseFragment(R.layout.first_page_register) {
 
     private fun initListeners() {
         btn_next.onClick {
-            navigateTo(R.id.homeClientFragment)
+            prepareRegister()
+        }
+    }
+
+    private fun prepareRegister() {
+        val phone = arguments?.getString(PUT_PHONE) as String
+        val name = et_name.text.toString()
+        val sureName = et_surname.text.toString()
+        val fatherland = et_fatherland.text.toString()
+        val days = et_days.text.toString()
+        val month = et_month.text.toString()
+        val years = et_years.text.toString()
+        val iin = et_iin.text.toString()
+
+        isValidateName = validateString(name, et_name, getString(R.string.enter_your_name))
+        isValidateSureName =
+            validateString(sureName, et_surname, getString(R.string.enter_your_sure_name))
+        isValidateFatherLand =
+            validateString(fatherland, et_fatherland, getString(R.string.enter_your_father))
+
+        isValidateIin = et_iin.validateIin(iin, getString(R.string.enter_iin))
+        isValidateDays = et_days.validateDays(days)
+        isValidateMonth = et_days.validateDays(month)
+        isValidateYears = et_days.validateYear(years)
+
+        when (isValidateIin && isValidateDays && isValidateFatherLand && isValidateMonth
+                && isValidateName && isValidateSureName && isValidateYears) {
+            true -> {
+                val birthday = "$years-$month-$days"
+                val signUpClientRequest = SignUpClientRequest(
+                    phone = phone,
+                    ftoken = "sadas",
+                    f_name = name,
+                    l_name = sureName,
+                    p_name = fatherland,
+                    bin = iin,
+                    birthday = birthday
+                )
+                setRegister(signUpClientRequest)
+            }
+        }
+
+    }
+
+    private fun setRegister(signUpClientRequest: SignUpClientRequest) {
+        setLoading(true)
+        CoroutineScope(Dispatchers.IO).launch {
+            viewModel.registration(signUpClientRequest)
+        }
+    }
+
+
+    private fun validateString(string: String, editText: EditText, errorText: String): Boolean {
+        return if (string.isNotEmpty()) {
+            true
+        } else {
+            editText.error = errorText
+            false
         }
     }
 
     private fun setLoading(loading: Boolean) {
-
+        loadingViews.visibility = if (loading) View.VISIBLE else View.GONE
     }
 
 }

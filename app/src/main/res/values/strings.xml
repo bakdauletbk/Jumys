@@ -31,6 +31,8 @@
     <string name="please_enter_a_name_to_continue">Чтобы продолжить, укажите имя</string>
     <string name="what_is_your_name">Как вас зовут?</string>
     <string name="enter_your_name">Введите имя</string>
+    <string name="enter_your_sure_name">Введите фамилию</string>
+    <string name="enter_your_father">Введите отечество</string>
     <string name="email">Электронная почта</string>
     <string name="enter_your_email">Введите email</string>
     <string name="for_what">Для чего?</string>
