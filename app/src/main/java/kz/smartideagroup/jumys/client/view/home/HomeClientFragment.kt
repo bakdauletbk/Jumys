@@ -4,33 +4,38 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_home_client.*
+import kotlinx.coroutines.*
 import kz.smartideagroup.jumys.R
-import kz.smartideagroup.jumys.client.model.response.home.AdviceResponse
-import kz.smartideagroup.jumys.client.model.response.home.CategoryResponse
-import kz.smartideagroup.jumys.client.model.response.home.HistoryResponse
-import kz.smartideagroup.jumys.client.view.home.adapter.AdviceAdapter
-import kz.smartideagroup.jumys.client.view.home.adapter.CategoryAdapter
-import kz.smartideagroup.jumys.client.view.home.adapter.HistoryAdapter
-import kz.smartideagroup.jumys.client.viewmodel.home.HomeClientViewModel
-import kz.smartideagroup.jumys.common.utils.TWO
+import kz.smartideagroup.jumys.specialist.model.response.home.AdviceResponse
+import kz.smartideagroup.jumys.common.utils.*
 import kz.smartideagroup.jumys.common.views.BaseFragment
+import kz.smartideagroup.jumys.client.model.response.home.*
+import kz.smartideagroup.jumys.client.view.home.adapter.BannerAdapter
+import kz.smartideagroup.jumys.client.view.home.adapter.ClaimAdapter
+import kz.smartideagroup.jumys.client.view.home.adapter.PopularQuestionsAdapter
+import kz.smartideagroup.jumys.client.view.home.adapter.RecommendedSpecialistsAdapter
+import kz.smartideagroup.jumys.client.viewmodel.home.HomeClientViewModel
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class HomeClientFragment : BaseFragment(R.layout.fragment_home_client) {
 
     private lateinit var viewModel: HomeClientViewModel
 
-    private val categoryAdapter: CategoryAdapter =
-        CategoryAdapter(this)
+    private val bannersAdapter by lazy { BannerAdapter(context) }
 
-    private val historyAdapter: HistoryAdapter =
-        HistoryAdapter(this)
+    private val adviceAdapter: AdviceManagerAdapter =
+        AdviceManagerAdapter(this)
 
-    private val adviceAdapter: AdviceAdapter =
-        AdviceAdapter(this)
+    private val claimAdapter: ClaimAdapter =
+        ClaimAdapter(this)
+
+    private val recommendedAdapter: RecommendedSpecialistsAdapter =
+        RecommendedSpecialistsAdapter(this)
+
+    private val popularQuestionsAdapter: PopularQuestionsAdapter =
+        PopularQuestionsAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,71 +54,114 @@ class HomeClientFragment : BaseFragment(R.layout.fragment_home_client) {
         updateFeeds()
         initListeners()
         initObservers()
+        setBannerContent()
     }
 
     private fun initRecyclerView() {
-        rv_history.apply {
-            adapter = historyAdapter
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        view_pager.apply {
+            adapter = bannersAdapter
+            setPadding(
+                convertDpToPixel(PADDING),
+                PADDING_TOP,
+                convertDpToPixel(PADDING),
+                PADDING_BOTTOM
+            )
+            pageMargin = convertDpToPixel(PAGE_MARGIN)
+            clipToPadding = false
         }
-        rv_advice_client.apply {
+        rv_advice_manager.apply {
             adapter = adviceAdapter
             layoutManager = LinearLayoutManager(context)
         }
-        rv_orders_by_category.apply {
-            adapter = categoryAdapter
-            layoutManager = GridLayoutManager(
-                requireContext(),
-                TWO,
-                GridLayoutManager.VERTICAL,
-                false
-            )
+        rv_claims_manager.apply {
+            adapter = claimAdapter
+            layoutManager = LinearLayoutManager(context)
+        }
+        rv_recommended_specialists.apply {
+            adapter = recommendedAdapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        }
+        rv_popular_questions.apply {
+            adapter = popularQuestionsAdapter
+            layoutManager = LinearLayoutManager(context)
         }
     }
 
     private fun updateFeeds() {
-        viewModel.getCategory()
         viewModel.getAdvice()
-        viewModel.getHistory()
+        viewModel.getClaim()
+        viewModel.getSpecialists()
+        viewModel.getPopularQuestion()
+        viewModel.getBanners()
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(this).get(HomeClientViewModel::class.java)
+        viewModel = ViewModelProvider(this)[HomeClientViewModel::class.java]
     }
 
     private fun initListeners() {
-        btn_find_order.onClick {
-            navigateTo(R.id.mapClientFragment)
+        btn_apply.onClick {
+            navigateTo(R.id.cameraFragment)
         }
     }
 
     private fun initObservers() {
-        viewModel.categoryList.observe(viewLifecycleOwner, {
-            setCategoryList(it)
+        viewModel.claimResponse.observe(viewLifecycleOwner, {
+            setClaimList(it)
         })
-        viewModel.adviceList.observe(viewLifecycleOwner, {
-            setAddViceList(it)
+        viewModel.adviceResponse.observe(viewLifecycleOwner, {
+            setAdviceList(it)
         })
-        viewModel.historyList.observe(viewLifecycleOwner, {
-            setHistoryList(it)
+        viewModel.recommendedSpecialists.observe(viewLifecycleOwner, {
+            setRecommendedList(it)
+        })
+        viewModel.popularQuestion.observe(viewLifecycleOwner, {
+            setPopularQuestion(it)
+        })
+        viewModel.bannerResponse.observe(viewLifecycleOwner, {
+            addSliderList(it)
         })
     }
 
-    private fun setHistoryList(it: List<HistoryResponse>?) {
-        historyAdapter.addList(it!!)
+    private fun addSliderList(sliderList: List<BannerResponse>) {
+        bannersAdapter.addImageSlider(sliderList)
     }
 
-    private fun setAddViceList(adviceList: List<AdviceResponse>?) {
-        adviceAdapter.addList(adviceList!!)
+    private fun setBannerContent() {
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                if (view_pager.currentItem != bannersAdapter.count.minus(ONE)) {
+                    view_pager.setCurrentItem(
+                        view_pager.currentItem.plus(ONE),
+                        true
+                    )
+                } else {
+                    view_pager.setCurrentItem(ZERO, true)
+                }
+                delay(TIME_MILLIS)
+
+                setBannerContent()
+                this.cancel()
+            } catch (e: Exception) {
+            }
+        }
     }
 
-    private fun setCategoryList(categoryList: List<CategoryResponse>?) {
-        categoryAdapter.addList(categoryList!!)
+    private fun setPopularQuestion(it: List<PopularQuestionResponse>?) {
+        popularQuestionsAdapter.addList(it!!)
     }
 
-    private fun setLoading(loading: Boolean) {
+    private fun setRecommendedList(it: List<RecommendedSpecialistsResponse>?) {
+        recommendedAdapter.addList(it!!)
+    }
 
+    private fun setAdviceList(it: List<AdviceResponse>?) {
+        adviceAdapter.addList(it!!)
+    }
+
+    private fun setClaimList(it: List<ClaimResponse>?) {
+        claimAdapter.addList(it!!)
     }
 
 }

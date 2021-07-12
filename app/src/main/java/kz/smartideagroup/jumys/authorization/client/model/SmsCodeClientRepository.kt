@@ -2,9 +2,9 @@ package kz.smartideagroup.jumys.authorization.client.model
 
 import android.app.Application
 import kz.smartideagroup.jumys.BuildConfig
-import kz.smartideagroup.jumys.authorization.manager.model.request.VerificationRequest
-import kz.smartideagroup.jumys.authorization.manager.model.response.UserResponse
-import kz.smartideagroup.jumys.authorization.manager.model.response.VerificationResponse
+import kz.smartideagroup.jumys.authorization.client.model.request.VerificationRequest
+import kz.smartideagroup.jumys.authorization.client.model.response.UserResponse
+import kz.smartideagroup.jumys.authorization.client.model.response.VerificationResponse
 import kz.smartideagroup.jumys.common.views.BaseRepository
 import retrofit2.Response
 
@@ -19,5 +19,4 @@ class SmsCodeClientRepository(application: Application) : BaseRepository(applica
         sessionManager.setIsAuthorize(true)
         sessionManager.setAccessToken(userResponse.access_token.toString())
     }
-
 }

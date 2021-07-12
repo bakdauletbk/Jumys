@@ -26,7 +26,7 @@ class ProfileClientFragment : BaseFragment(R.layout.fragment_profile_client) {
     }
 
     private fun initListeners() {
-        btn_log_out.onClick {
+        btn_log_out_manager.onClick {
             navigateTo(R.id.roleFragment)
         }
     }

@@ -1,13 +1,13 @@
 package kz.smartideagroup.jumys.common.remote
 
+import kz.smartideagroup.jumys.authorization.client.model.request.AuthSmsRequest
+import kz.smartideagroup.jumys.authorization.client.model.request.SignInRequest
 import kz.smartideagroup.jumys.authorization.client.model.request.SignUpClientRequest
-import kz.smartideagroup.jumys.authorization.manager.model.request.AuthSmsRequest
-import kz.smartideagroup.jumys.authorization.manager.model.request.SignInRequest
-import kz.smartideagroup.jumys.authorization.manager.model.request.SignUpManagerRequest
-import kz.smartideagroup.jumys.authorization.manager.model.request.VerificationRequest
-import kz.smartideagroup.jumys.authorization.manager.model.response.SignUpManagerResponse
-import kz.smartideagroup.jumys.authorization.manager.model.response.VerificationResponse
-import kz.smartideagroup.jumys.manager.model.request.apply_claim.RequestWorkUpload
+import kz.smartideagroup.jumys.authorization.client.model.request.VerificationRequest
+import kz.smartideagroup.jumys.authorization.client.model.response.SignUpClientResponse
+import kz.smartideagroup.jumys.authorization.client.model.response.VerificationResponse
+import kz.smartideagroup.jumys.authorization.specialist.model.request.SignUpSpecialistRequest
+import kz.smartideagroup.jumys.client.model.request.apply_claim.RequestWorkUpload
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Body
@@ -45,13 +45,13 @@ interface NetworkService {
     @POST(EndPoints.POST_SIGN_UP_MANAGER)
     suspend fun signUpManager(
         @Header("appVer") appVer: String,
-        @Body signUpManagerRequest: SignUpManagerRequest,
-    ): Response<SignUpManagerResponse>
+        @Body signUpClientRequest: SignUpClientRequest,
+    ): Response<SignUpClientResponse>
 
     @POST(EndPoints.POST_SIGN_UP_CLIENT)
     suspend fun signUpClient(
         @Header("appVer") appVer: String,
-        @Body signUpClientRequest: SignUpClientRequest,
-    ): Response<SignUpManagerResponse>
+        @Body signUpClientRequest: SignUpSpecialistRequest,
+    ): Response<SignUpClientResponse>
 
 }

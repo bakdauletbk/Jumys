@@ -311,7 +311,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/line10"
-                app:met_mask="############"
+                app:mask="############"
                 tools:ignore="Autofill" />
 
             <com.google.android.material.button.MaterialButton

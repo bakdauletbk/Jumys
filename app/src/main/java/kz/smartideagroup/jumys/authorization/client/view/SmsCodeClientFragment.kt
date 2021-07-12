@@ -5,15 +5,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.android.synthetic.main.fragment_sms_code_client.btn_next
-import kotlinx.android.synthetic.main.fragment_sms_code_client.codeInputView
-import kotlinx.android.synthetic.main.fragment_sms_code_client.loadingView
+import kotlinx.android.synthetic.main.fragment_sms_code_client.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kz.smartideagroup.jumys.R
+import kz.smartideagroup.jumys.authorization.client.model.request.VerificationRequest
 import kz.smartideagroup.jumys.authorization.client.viewmodel.SmsCodeClientViewModel
-import kz.smartideagroup.jumys.authorization.manager.model.request.VerificationRequest
 import kz.smartideagroup.jumys.common.helpers.Validators
 import kz.smartideagroup.jumys.common.utils.PUT_PHONE
 import kz.smartideagroup.jumys.common.views.BaseFragment
@@ -27,7 +25,7 @@ class SmsCodeClientFragment : BaseFragment(R.layout.fragment_sms_code_client) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requireActivity().onBackPressedDispatcher.addCallback(this) {
-            navigateTo(R.id.signInManagerFragment)
+            navigateTo(R.id.signInClientFragment)
         }
     }
 
@@ -50,7 +48,7 @@ class SmsCodeClientFragment : BaseFragment(R.layout.fragment_sms_code_client) {
         viewModel.isSuccess.observe(viewLifecycleOwner, {
             when (it) {
                 true -> navigateTo(R.id.homeClientFragment)
-                false -> navigateToBundle(R.id.action_smsCodeManagerFragment_to_registrationManagerFragment,
+                false -> navigateToBundle(R.id.action_smsCodeClientFragment_to_registrationClientFragment,
                     bundle)
             }
         })
@@ -77,13 +75,12 @@ class SmsCodeClientFragment : BaseFragment(R.layout.fragment_sms_code_client) {
         })
     }
 
-    private fun initViewModel() {
-        viewModel = ViewModelProvider(this)[SmsCodeClientViewModel::class.java]
-    }
-
     private fun initListeners() {
         btn_next.onClick {
             prepareLogin()
+        }
+        iv_close.onClick {
+            navigateTo(R.id.roleFragment)
         }
     }
 
@@ -93,7 +90,7 @@ class SmsCodeClientFragment : BaseFragment(R.layout.fragment_sms_code_client) {
         val smsCode = codeInputView.code.toString()
         val verificationRequest = VerificationRequest(phone = phone,
             activationcode = smsCode,
-            role = getString(R.string.master))
+            role = getString(R.string.client))
         when (Validators.validateSMS(smsCode)) {
             true -> sendVerification(verificationRequest)
             false -> codeInputView.error = getString(R.string.enter_sms)
@@ -107,10 +104,13 @@ class SmsCodeClientFragment : BaseFragment(R.layout.fragment_sms_code_client) {
         }
     }
 
+    private fun initViewModel() {
+        viewModel = ViewModelProvider(this)[SmsCodeClientViewModel::class.java]
+    }
+
     private fun setLoading(loading: Boolean) {
         loadingView.visibility = if (loading) View.VISIBLE else View.GONE
         btn_next.isEnabled = loading
-        codeInputView.isEnabled = loading
     }
 
 }

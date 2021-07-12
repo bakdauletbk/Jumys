@@ -5,15 +5,15 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import kz.smartideagroup.jumys.authorization.manager.model.SmsCodeManagerRepository
-import kz.smartideagroup.jumys.authorization.manager.model.request.VerificationRequest
+import kz.smartideagroup.jumys.authorization.client.model.SmsCodeClientRepository
+import kz.smartideagroup.jumys.authorization.client.model.request.VerificationRequest
 import kz.smartideagroup.jumys.common.utils.RESPONSE_SUCCESS
 import kz.smartideagroup.jumys.common.utils.RESPONSE_UNAUTHORIZED
 import kz.smartideagroup.jumys.common.utils.RESPONSE_UPDATE_APP
 
 class SmsCodeClientViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = SmsCodeManagerRepository(application)
+    private val repository = SmsCodeClientRepository(application)
 
     val isError = MutableLiveData<String>()
     val isSuccess = MutableLiveData<Boolean>()

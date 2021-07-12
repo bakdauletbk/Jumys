@@ -2,21 +2,32 @@ package kz.smartideagroup.jumys.authorization.client.view
 
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
-import com.google.android.material.tabs.TabLayout
+import android.widget.Toast
+import androidx.activity.addCallback
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_registration_client.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kz.smartideagroup.jumys.R
-import kz.smartideagroup.jumys.authorization.client.view.adapter.PagerAdapter
-import kz.smartideagroup.jumys.common.utils.*
+import kz.smartideagroup.jumys.authorization.client.model.request.SignUpClientRequest
+import kz.smartideagroup.jumys.authorization.client.viewmodel.RegistrationClientViewModel
+import kz.smartideagroup.jumys.common.utils.PUT_PHONE
 import kz.smartideagroup.jumys.common.views.BaseFragment
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class RegistrationClientFragment : BaseFragment(R.layout.fragment_registration_client) {
 
-    companion object {
-        const val PRIVATE_PERSON_TAB = "Частное лицо"
-        const val IP_TOO_TAB = "ИП/ТОО"
-        const val ONE_FLOAT = 1f
-        const val TWO_FLOAT = 2f
+    private lateinit var viewModel: RegistrationClientViewModel
+
+    private var isValidateName = false
+    private var isValidateEmail = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            navigateTo(R.id.roleFragment)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,39 +36,90 @@ class RegistrationClientFragment : BaseFragment(R.layout.fragment_registration_c
     }
 
     private fun lets() {
-        initViewPager()
+        initViewModel()
+        initListeners()
+        initObservers()
     }
 
-    private fun initViewPager() {
-        tab_layout.addTab(tab_layout.newTab().setText(PRIVATE_PERSON_TAB))
-        tab_layout.addTab(tab_layout.newTab().setText(IP_TOO_TAB))
-        tab_layout.tabGravity = TabLayout.GRAVITY_FILL
-        tab_layout.setTabWidthAsWrapContents(ZERO, false)
-        tab_layout.setTabWidthAsWrapContents(ONE, false)
-
-        val adapter = PagerAdapter(childFragmentManager, tab_layout.tabCount)
-        vp_questionnaire!!.adapter = adapter
-
-        vp_questionnaire.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab_layout))
-        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                vp_questionnaire.currentItem = tab.position
+    private fun initObservers() {
+        viewModel.isError.observe(viewLifecycleOwner, {
+            setLoading(false)
+            errorDialog(getString(R.string.error_no_internet_msg))
+        })
+        viewModel.isSuccess.observe(viewLifecycleOwner, {
+            when (it) {
+                true -> navigateTo(R.id.homeClientFragment)
+                false -> {
+                    setLoading(false)
+                    errorDialog(getString(R.string.error_failed_connection_to_server))
+                }
             }
-            override fun onTabUnselected(tab: TabLayout.Tab) {}
-            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
+        viewModel.isUpdateApp.observe(viewLifecycleOwner, {
+            when (it) {
+                true -> showAlertDialog(
+                    requireContext(),
+                    getString(R.string.our_application_has_been_updated_please_update)
+                )
+            }
+        })
+        viewModel.isUnAuthorized.observe(viewLifecycleOwner, {
+            when (it) {
+                true -> {
+                    setLoading(false)
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.you_are_logged_in_under_your_account_on_another_device),
+                        Toast.LENGTH_LONG
+                    ).show()
+                    navigateTo(R.id.roleFragment)
+                }
+            }
         })
     }
 
-    private fun TabLayout.setTabWidthAsWrapContents(tabPosition: Int, select: Boolean) {
-        val layout =
-            (this.getChildAt(ZERO) as LinearLayout).getChildAt(tabPosition) as LinearLayout
-        val layoutParams = layout.layoutParams as LinearLayout.LayoutParams
-        when (select) {
-            true -> layoutParams.weight = TWO_FLOAT
-            false -> layoutParams.weight = ONE_FLOAT
+    private fun initListeners() {
+        btn_next.onClick {
+            prepareRegistration()
         }
-        layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT
-        layout.layoutParams = layoutParams
     }
 
+    private fun prepareRegistration() {
+        val phone = arguments?.getString(PUT_PHONE) as String
+        val name = et_name.text.toString()
+        val email = et_email.text.toString()
+
+        isValidateName = if (name.isNotEmpty()) true else {
+            et_name.error = getString(R.string.enter_your_name)
+            false
+        }
+
+        isValidateEmail = if (email.isNotEmpty()) true else {
+            et_email.error = getString(R.string.enter_your_email)
+            false
+        }
+
+        val signUpManagerRequest =
+            SignUpClientRequest(phone = phone, ftoken = "sad", full_name = name, email = email)
+
+        when (isValidateEmail && isValidateName) {
+            true -> setRegister(signUpManagerRequest)
+        }
+    }
+
+    private fun setRegister(signUpClientRequest: SignUpClientRequest) {
+        setLoading(true)
+        CoroutineScope(Dispatchers.IO).launch {
+            viewModel.registration(signUpClientRequest)
+        }
+    }
+
+    private fun initViewModel() {
+        viewModel = ViewModelProvider(this)[RegistrationClientViewModel::class.java]
+    }
+
+    private fun setLoading(loading: Boolean) {
+        loadingView.visibility = if (loading) View.VISIBLE else View.GONE
+        btn_next.isEnabled = loading
+    }
 }

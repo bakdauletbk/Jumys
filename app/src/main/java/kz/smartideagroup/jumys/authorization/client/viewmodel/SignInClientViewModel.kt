@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kz.smartideagroup.jumys.authorization.client.model.SignInClientRepository
-import kz.smartideagroup.jumys.authorization.manager.model.request.AuthSmsRequest
+import kz.smartideagroup.jumys.authorization.client.model.request.AuthSmsRequest
 import kz.smartideagroup.jumys.common.utils.RESPONSE_SUCCESS
 import kz.smartideagroup.jumys.common.utils.RESPONSE_UNAUTHORIZED
 import kz.smartideagroup.jumys.common.utils.RESPONSE_UPDATE_APP

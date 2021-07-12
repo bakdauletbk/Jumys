@@ -21,7 +21,6 @@ class FoundationActivity : BaseActivity() {
     isRole = false -> Manager
      */
 
-
     companion object {
         const val ITEM_MENU = 2
         const val SUPPORT_MENU = 3
@@ -49,7 +48,7 @@ class FoundationActivity : BaseActivity() {
     private fun initBottomNavigation() {
         fab.onClick {
             when (isRole) {
-                true -> navigateTo(R.id.mapClientFragment)
+                true -> navigateTo(R.id.mapSpecialistFragment)
                 false -> navigateTo(R.id.cameraFragment)
             }
         }
@@ -91,76 +90,76 @@ class FoundationActivity : BaseActivity() {
 
     private fun showProfileManagerFragment() {
         currentNavigationItemId = R.id.profile_menu
-        navigateTo(R.id.profileManagerFragment)
+        navigateTo(R.id.profileClientFragment)
     }
 
     private fun showSupportManagerFragment() {
-        navigateTo(R.id.supportManagerFragment)
+        navigateTo(R.id.supportClientFragment)
     }
 
     private fun showClaimManagerFragment() {
         currentNavigationItemId = R.id.claim_menu
-        navigateTo(R.id.claimManagerFragment)
+        navigateTo(R.id.claimClientFragment)
     }
 
     private fun showHomeManagerFragment() {
         currentNavigationItemId = R.id.home_menu
-        navigateTo(R.id.homeManagerFragment)
+        navigateTo(R.id.homeClientFragment)
     }
 
     private fun showProfileClientFragment() {
         currentNavigationItemId = R.id.profile_menu
-        navigateTo(R.id.profileClientFragment)
+        navigateTo(R.id.profileSpecialistFragment)
     }
 
     private fun showSupportClientFragment() {
-        navigateTo(R.id.supportClientFragment)
+        navigateTo(R.id.supportSpecialistFragment)
     }
 
     private fun showClaimClientFragment() {
         currentNavigationItemId = R.id.claim_menu
-        navigateTo(R.id.claimClientFragment)
+        navigateTo(R.id.claimSpecialistFragment)
     }
 
     private fun showHomeClientFragment() {
         currentNavigationItemId = R.id.home_menu
-        navigateTo(R.id.homeClientFragment)
+        navigateTo(R.id.homeSpecialistFragment)
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun destinationListeners(navController: NavController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                //Manager
-                R.id.homeManagerFragment -> {
-                    isRole = false
-                    currentNavigationItemId = R.id.home_menu
-                    bottom_navigation_bar.menu.getItem(HOME_MENU).isChecked = true
-                    showBottomNavigation()
-                }
-                R.id.claimManagerFragment -> {
-                    isRole = false
-                    bottom_navigation_bar.menu.getItem(CLAIM_MENU).isChecked = true
-                    showBottomNavigation()
-                }
-                R.id.profileManagerFragment -> {
-                    isRole = false
-                    bottom_navigation_bar.menu.getItem(PROFILE_MENU).isChecked = true
-                    showBottomNavigation()
-                }
                 //Client
                 R.id.homeClientFragment -> {
-                    isRole = true
+                    isRole = false
                     currentNavigationItemId = R.id.home_menu
                     bottom_navigation_bar.menu.getItem(HOME_MENU).isChecked = true
                     showBottomNavigation()
                 }
                 R.id.claimClientFragment -> {
-                    isRole = true
+                    isRole = false
                     bottom_navigation_bar.menu.getItem(CLAIM_MENU).isChecked = true
                     showBottomNavigation()
                 }
                 R.id.profileClientFragment -> {
+                    isRole = false
+                    bottom_navigation_bar.menu.getItem(PROFILE_MENU).isChecked = true
+                    showBottomNavigation()
+                }
+                //Specialist
+                R.id.homeSpecialistFragment -> {
+                    isRole = true
+                    currentNavigationItemId = R.id.home_menu
+                    bottom_navigation_bar.menu.getItem(HOME_MENU).isChecked = true
+                    showBottomNavigation()
+                }
+                R.id.claimSpecialistFragment -> {
+                    isRole = true
+                    bottom_navigation_bar.menu.getItem(CLAIM_MENU).isChecked = true
+                    showBottomNavigation()
+                }
+                R.id.profileSpecialistFragment -> {
                     isRole = true
                     bottom_navigation_bar.menu.getItem(PROFILE_MENU).isChecked = true
                     showBottomNavigation()

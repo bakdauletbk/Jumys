@@ -1,37 +1,43 @@
 package kz.smartideagroup.jumys.client.viewmodel.home
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import kz.smartideagroup.jumys.specialist.model.response.home.AdviceResponse
 import kz.smartideagroup.jumys.client.model.repository.home.HomeClientRepository
-import kz.smartideagroup.jumys.client.model.response.home.AdviceResponse
-import kz.smartideagroup.jumys.client.model.response.home.CategoryResponse
-import kz.smartideagroup.jumys.client.model.response.home.HistoryResponse
-import java.lang.Exception
+import kz.smartideagroup.jumys.client.model.response.home.BannerResponse
+import kz.smartideagroup.jumys.client.model.response.home.ClaimResponse
+import kz.smartideagroup.jumys.client.model.response.home.PopularQuestionResponse
+import kz.smartideagroup.jumys.client.model.response.home.RecommendedSpecialistsResponse
 
 class HomeClientViewModel(application: Application) : AndroidViewModel(application) {
 
-    companion object {
-        const val TAG = "HomeClientViewModel"
-    }
-
     private val repository = HomeClientRepository(application)
 
-    val adviceList = MutableLiveData<List<AdviceResponse>>()
-    val historyList = MutableLiveData<List<HistoryResponse>>()
-    val categoryList = MutableLiveData<ArrayList<CategoryResponse>>()
+    val adviceResponse = MutableLiveData<List<AdviceResponse>>()
+    val claimResponse = MutableLiveData<List<ClaimResponse>>()
+    val recommendedSpecialists = MutableLiveData<List<RecommendedSpecialistsResponse>>()
+    val popularQuestion = MutableLiveData<List<PopularQuestionResponse>>()
+    val bannerResponse = MutableLiveData<List<BannerResponse>>()
 
-    fun getHistory() {
-        historyList.postValue(repository.getHistory())
-    }
-
-    fun getCategory() {
-        categoryList.postValue(repository.getCategory())
+    fun getBanners() {
+        bannerResponse.postValue(repository.getBanners())
     }
 
     fun getAdvice() {
-        adviceList.postValue(repository.getAdvice())
+        adviceResponse.postValue(repository.getAdvice())
+    }
+
+    fun getClaim() {
+        claimResponse.postValue(repository.getClaim())
+    }
+
+    fun getSpecialists() {
+        recommendedSpecialists.postValue(repository.getSpecialists())
+    }
+
+    fun getPopularQuestion() {
+        popularQuestion.postValue(repository.getPopularQuestion())
     }
 
 }

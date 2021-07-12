@@ -3,14 +3,15 @@ package kz.smartideagroup.jumys.authorization.client.view
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_sign_in_client.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kz.smartideagroup.jumys.R
+import kz.smartideagroup.jumys.authorization.client.model.request.AuthSmsRequest
 import kz.smartideagroup.jumys.authorization.client.viewmodel.SignInClientViewModel
-import kz.smartideagroup.jumys.authorization.manager.model.request.AuthSmsRequest
 import kz.smartideagroup.jumys.common.helpers.TextUtils
 import kz.smartideagroup.jumys.common.helpers.Validators
 import kz.smartideagroup.jumys.common.utils.PUT_PHONE
@@ -21,6 +22,13 @@ class SignInClientFragment : BaseFragment(R.layout.fragment_sign_in_client) {
 
     private lateinit var viewModel: SignInClientViewModel
     val bundle = Bundle()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            navigateTo(R.id.roleFragment)
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,8 +48,7 @@ class SignInClientFragment : BaseFragment(R.layout.fragment_sign_in_client) {
         })
         viewModel.isSuccess.observe(viewLifecycleOwner, {
             when (it) {
-                true -> navigateToBundle(R.id.action_signInManagerFragment_to_smsCodeManagerFragment,
-                    bundle)
+                true -> navigateToBundle(R.id.action_signInClientFragment_to_smsCodeClientFragment, bundle)
                 false -> {
                     setLoading(false)
                     errorDialog(getString(R.string.error_failed_connection_to_server))
@@ -72,16 +79,6 @@ class SignInClientFragment : BaseFragment(R.layout.fragment_sign_in_client) {
         })
     }
 
-    private fun setLoading(loading: Boolean) {
-        loadingView.visibility = if (loading) View.VISIBLE else View.GONE
-        et_phone.isEnabled = loading
-        btn_next.isEnabled = loading
-    }
-
-    private fun initViewModel() {
-        viewModel = ViewModelProvider(this)[SignInClientViewModel::class.java]
-    }
-
     private fun initListeners() {
         btn_next.onClick {
             prepareSms()
@@ -105,6 +102,16 @@ class SignInClientFragment : BaseFragment(R.layout.fragment_sign_in_client) {
         CoroutineScope(Dispatchers.IO).launch {
             viewModel.sendSms(authSmsRequest)
         }
+    }
+
+    private fun initViewModel() {
+        viewModel = ViewModelProvider(this)[SignInClientViewModel::class.java]
+    }
+
+    private fun setLoading(loading: Boolean) {
+        loadingView.visibility = if (loading) View.VISIBLE else View.GONE
+        btn_next.isEnabled = loading
+        et_phone.isEnabled = loading
     }
 
 }

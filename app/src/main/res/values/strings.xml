@@ -2,7 +2,6 @@
     <string name="app_name">Jumys</string>
     <string name="customer">Заказчик</string>
 
-
     <string name="home">Главная</string>
     <string name="claim">Заявки</string>
     <string name="to_order">Новые заказы</string>
@@ -11,7 +10,6 @@
 
     //Content
     <string name="support_text">Служба поддержки</string>
-
 
     //Role
     <string name="i_want_to_find_a_specialist_for_the_execution_of_works">Хочу найти специалиста для выролнение работ</string>
@@ -51,7 +49,6 @@
 
     //Call
     <string name="call"> "Чтобы позвонить, пожалуйста, Нажмите Разрешить"</string>
-
 
     //Обработка ошибки
     <string name="error_unknown_title">Что-то пошло не так…</string>
@@ -129,7 +126,6 @@
     <string name="we_will_contact_you_shortly">Свяжемся с вами в ближайшее время</string>
     <string name="fill_out_a_questionnaire">Чтобы продолжить, заполните анкету</string>
 
-
     <string name="z">*</string>
     <string name="ip">ИП</string>
     <string name="too">ТОО</string>
@@ -157,7 +153,5 @@
     <string name="enter_sms">Введите смс код!</string>
     <string name="master">master</string>
     <string name="client">client</string>
-
-
 
 </resources>

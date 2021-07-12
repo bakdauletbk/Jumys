@@ -1,183 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="@dimen/dimens_140dp"
+            android:layout_marginTop="@dimen/dimens_20dp"
+            android:layout_marginBottom="@dimen/dimens_10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:id="@+id/ll_search"
+        <LinearLayout
+            android:id="@+id/ll_claim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_20dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_pager">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_apply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimens_16dp"
-                android:background="@drawable/shape_search_view"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <EditText
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dimens_5dp"
-                    android:layout_marginTop="@dimen/dimens_5dp"
-                    android:layout_marginBottom="@dimen/dimens_5dp"
-                    android:layout_weight="0.88"
-                    android:background="@color/background"
-                    android:fontFamily="@font/whitney_book"
-                    android:hint="@string/search"
-                    android:padding="@dimen/dimens_10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/text_grays"
-                    android:textSize="@dimen/dimens_15sp"
-                    tools:ignore="Autofill,TextFields" />
-
-                <ImageView
-                    android:layout_width="@dimen/dimens_0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.12"
-                    android:padding="@dimen/dimens_5dp"
-                    android:src="@drawable/ic_search_icon"
-                    tools:ignore="ContentDescription" />
-
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_history"
-                android:paddingStart="@dimen/dimens_15dp"
-                android:layout_width="match_parent"
-                android:paddingEnd="@dimen/dimens_10dp"
-                android:clipToPadding = "false"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_5dp" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimens_16dp"
-                android:layout_marginTop="@dimen/dimens_15dp"
-                android:layout_marginEnd="@dimen/dimens_16dp"
-                android:background="@drawable/shape_white_corner_radius8dp"
-                android:elevation="@dimen/dimens_5dp">
-
-                <LinearLayout
-                    android:id="@+id/linearLayout7"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="@dimen/dimens_150dp"
-                        android:layout_height="@dimen/dimens_150dp"
-                        android:layout_marginStart="@dimen/dimens_20dp"
-                        android:src="@drawable/image_location"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="ContentDescription" />
-
-                    <ImageView
-                        android:layout_width="@dimen/dimens_150dp"
-                        android:layout_height="@dimen/dimens_150dp"
-                        android:src="@drawable/image_home_location"
-                        app:layout_constraintStart_toEndOf="@+id/imageView4"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="ContentDescription" />
-
-                </LinearLayout>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_find_order"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dimens_40dp"
-                    android:layout_marginEnd="@dimen/dimens_40dp"
-                    android:layout_marginBottom="@dimen/dimens_10dp"
-                    android:paddingVertical="@dimen/dimens_15dp"
-                    android:text="@string/find_orders_nearby"
-                    android:textAllCaps="false"
-                    android:textSize="@dimen/dimens_16sp"
-                    android:textStyle="bold"
-                    app:cornerRadius="@dimen/dimens_15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dimens_16dp"
-                    android:text="@string/advice"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/dimens_14sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_advice_client"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimens_10dp" />
-
-            </LinearLayout>
-
+                android:layout_marginStart="@dimen/dimens_20dp"
+                android:layout_marginEnd="@dimen/dimens_20dp"
+                android:backgroundTint="@color/green"
+                android:paddingVertical="@dimen/dimens_15dp"
+                android:text="@string/apply"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimens_16sp"
+                android:textStyle="bold"
+                app:cornerRadius="@dimen/dimens_15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimens_16dp"
-                android:layout_marginTop="@dimen/dimens_15dp"
-                android:text="@string/orders_by_category"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/dimens_12dp"
+                android:text="@string/claim"
                 android:textColor="@color/green"
                 android:textSize="@dimen/dimens_14sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_orders_by_category"
+                android:id="@+id/rv_claims_manager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimens_5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/dimens_20dp"
+                android:text="@string/recommended_specialists"
+                android:textColor="@color/green"
+                android:textSize="@dimen/dimens_14sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_recommended_specialists"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimens_10dp"
-                android:paddingStart="@dimen/dimens_10dp"
-                android:paddingEnd="@dimen/dimens_10dp"
-                android:paddingBottom="@dimen/dimens_80dp" />
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/dimens_15dp"
+                android:paddingEnd="@dimen/dimens_15dp" />
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
-
-    <RelativeLayout
-        android:id="@+id/loadingView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#54000000"
-        android:visibility="gone">
-
-        <ProgressBar
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/ll_apply"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/round_white_foreground" />
+            android:layout_marginTop="@dimen/dimens_20dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_claim">
 
-    </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/popular_questions"
+                android:textColor="@color/green"
+                android:textSize="@dimen/dimens_14sp" />
 
-</RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_popular_questions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimens_5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/dimens_15dp"
+                android:text="@string/advice"
+                android:textColor="@color/green"
+                android:textSize="@dimen/dimens_14sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_advice_manager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimens_5dp"
+                android:paddingBottom="@dimen/dimens_90dp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

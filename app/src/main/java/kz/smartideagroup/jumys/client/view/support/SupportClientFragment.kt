@@ -20,10 +20,6 @@ class SupportClientFragment : BaseFragment(R.layout.fragment_support_client) {
         initObservers()
     }
 
-    private fun initViewModel() {
-
-    }
-
     private fun initListeners() {
         ll_on_back_pressed.onClick {
             activity?.onBackPressed()
@@ -34,4 +30,7 @@ class SupportClientFragment : BaseFragment(R.layout.fragment_support_client) {
 
     }
 
+    private fun initViewModel() {
+
+    }
 }
