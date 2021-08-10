@@ -153,5 +153,6 @@
     <string name="enter_sms">Введите смс код!</string>
     <string name="master">master</string>
     <string name="client">client</string>
+    <string name="filter">Фильтр</string>
 
 </resources>
