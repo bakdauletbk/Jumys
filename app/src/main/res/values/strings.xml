@@ -24,6 +24,7 @@
     <string name="skip_registration">Пропустить регистрацию</string>
     <string name="enter_the_code_from_sms">Введите код из СМС</string>
     <string name="send_sms_number">Отправлен на номер загрузка…</string>
+    <string name="send_sms_number_phone">Отправлен на номер</string>
     <string name="you_can_send_the_code_again_via">Отправить код повторно можно через: загрузка…</string>
     <string name="contact_details">Контактные данные</string>
     <string name="please_enter_a_name_to_continue">Чтобы продолжить, укажите имя</string>
@@ -38,6 +39,7 @@
     <string name="how_does_it_work">Как работает Jumys.kz?</string>
     <string name="further">Далее</string>
     <string name="dialog_exit">Выйти</string>
+    <string name="add_photo">Добавить анкету</string>
 
     //Button
     <string name="ok">Oк</string>
@@ -117,7 +119,7 @@
     <string name="gender">Пол</string>
     <string name="man">Мужчина</string>
     <string name="woman">Женщина</string>
-    <string name="iin">ИИН</string>
+    <string name="iin">ИИН<font color="#DC0F0F">*</font></string>
     <string name="enter_iin">Введите иин</string>
     <string name="change">Изменить</string>
     <string name="app_version">Версия приложения 1.0</string>
@@ -138,10 +140,10 @@
     <string name="bin">БИН</string>
     <string name="enter_your_bin">Введите БИН</string>
     <string name="enter_your_iin">Введите ИИН</string>
-    <string name="number_register">Номер свидетельства о регистрации</string>
+    <string name="number_register">Номер свидетельства о регистрации<font color="#DC0F0F">*</font></string>
     <string name="enter_the_number">Введите номер</string>
-    <string name="attch_photo">Прикрепить фото свидетельства о регистрации</string>
-    <string name="attach_photo_human">Прикрепить фото свидетельства о регистрации юридического лица</string>
+    <string name="attach_photo">Прикрепить фото свидетельства о регистрации<font color="#DC0F0F">*</font></string>
+    <string name="attach_photo_human">Прикрепить фото свидетельства о регистрации юридического лица<font color="#DC0F0F">*</font></string>
     <string name="phone_number">Номер телефона</string>
     <string name="service_budget">Бюджет за услугу</string>
     <string name="enter_the_amount">Ввести сумму</string>
@@ -154,5 +156,11 @@
     <string name="master">master</string>
     <string name="client">client</string>
     <string name="filter">Фильтр</string>
+
+    <string name="validate_day">Напишите дату вашего рождения</string>
+    <string name="validate_month">Введите ваш месяц рождения</string>
+    <string name="validate_year">Напишите свой год рождения</string>
+    <string name="quest_moderator">Анкета отправлена на модерацию</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eu lobortis id aliquet vivamus orci. Dui tincidunt et turpis diam sed sollicitudin. Pellentesque ut amet justo mattis a tortor. Molestie mauris venenatis hac orci.</string>
 
 </resources>

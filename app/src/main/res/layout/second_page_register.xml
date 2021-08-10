@@ -26,6 +26,7 @@
                     android:id="@+id/ip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:text="@string/ip" />
 
                 <RadioButton
@@ -149,7 +150,7 @@
             </LinearLayout>
 
             <EditText
-                android:id="@+id/fatherland"
+                android:id="@+id/et_fatherland"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimens_5dp"
@@ -172,8 +173,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimens_15dp"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/fatherland">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -192,15 +192,13 @@
 
             <LinearLayout
                 android:id="@+id/line8"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:weightSum="3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/line7">
+                android:weightSum="3">
 
                 <EditText
+                    android:id="@+id/et_day"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -208,6 +206,7 @@
                     android:fontFamily="@font/whitney_book"
                     android:hint="@string/day"
                     android:inputType="number"
+                    android:maxLength="2"
                     android:padding="@dimen/dimens_16dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/text_gray"
@@ -215,6 +214,7 @@
                     tools:ignore="Autofill" />
 
                 <EditText
+                    android:id="@+id/et_month"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimens_11dp"
@@ -222,6 +222,7 @@
                     android:background="@drawable/shape_sign_in_edit_text"
                     android:fontFamily="@font/whitney_book"
                     android:hint="@string/month"
+                    android:maxLength="2"
                     android:inputType="number"
                     android:padding="@dimen/dimens_16dp"
                     android:textColor="@color/black"
@@ -230,6 +231,7 @@
                     tools:ignore="Autofill" />
 
                 <EditText
+                    android:id="@+id/et_year"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimens_11dp"
@@ -238,6 +240,7 @@
                     android:fontFamily="@font/whitney_book"
                     android:hint="@string/year"
                     android:inputType="number"
+                    android:maxLength="4"
                     android:padding="@dimen/dimens_16dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/text_gray"
@@ -286,14 +289,37 @@
                     android:layout_marginStart="@dimen/dimens_19dp"
                     android:text="@string/women" />
             </RadioGroup>
-
-            <LinearLayout
-                android:id="@+id/line10"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:layout_marginTop="@dimen/dimens_15dp"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/dimens_12sp"
+                android:textStyle="bold" />
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimens_5dp"
+                android:background="@drawable/shape_sign_in_edit_text"
+                android:fontFamily="@font/whitney_book"
+                android:hint="@string/enter_your_email"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/dimens_16dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/text_gray"
+                android:textSize="@dimen/dimens_15sp"
+                android:textStyle="bold"
+                tools:ignore="Autofill" />
+
+            <LinearLayout
+                android:id="@+id/ll_ip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
                 android:layout_marginTop="@dimen/dimens_15dp"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/line11">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -302,16 +328,9 @@
                     android:textColor="@color/text_gray"
                     android:textSize="@dimen/dimens_12sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/z"
-                    android:textColor="@color/red" />
-            </LinearLayout>
-
             <EditText
-                android:id="@+id/iin"
+                android:id="@+id/et_iin"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimens_5dp"
@@ -319,40 +338,21 @@
                 android:fontFamily="@font/whitney_book"
                 android:hint="@string/enter_your_iin"
                 android:inputType="number"
+                android:maxLength="12"
                 android:padding="@dimen/dimens_16dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/text_gray"
                 android:textSize="@dimen/dimens_15sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/line10"
                 tools:ignore="Autofill" />
-
-            <LinearLayout
-                android:id="@+id/line12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_15dp"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/iin">
-
                 <TextView
                     android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_15dp"
                     android:layout_height="wrap_content"
                     android:text="@string/number_register"
                     android:textColor="@color/text_gray"
                     android:textSize="@dimen/dimens_12sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/z"
-                    android:textColor="@color/red" />
-            </LinearLayout>
-
             <EditText
                 android:id="@+id/register_number"
                 android:layout_width="match_parent"
@@ -362,129 +362,99 @@
                 android:fontFamily="@font/whitney_book"
                 android:hint="@string/enter_the_number"
                 android:inputType="number"
+                android:maxLength="17"
                 android:padding="@dimen/dimens_16dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/text_gray"
                 android:textSize="@dimen/dimens_15sp"
                 android:textStyle="bold"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/line12"
+                android:visibility="visible"
                 tools:ignore="Autofill" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_15dp"
+                    android:text="@string/attach_photo"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/dimens_12sp"
+                    android:textStyle="bold" />
+                <LinearLayout
+                    android:id="@+id/image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_5dp"
+                    android:background="@drawable/shape_add_plus"
+                    android:gravity="center"
+                    android:padding="24.22dp"
+                    android:visibility="visible">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_plus"
+                        tools:ignore="ContentDescription" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_too"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/dimens_15dp"
+                android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_bin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:text="@string/bin"
+                android:textSize="@dimen/dimens_12sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_gray"/>
             <EditText
-                android:id="@+id/enter_bin"
+                android:id="@+id/et_bin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimens_5dp"
                 android:background="@drawable/shape_sign_in_edit_text"
                 android:fontFamily="@font/whitney_book"
                 android:hint="@string/enter_your_bin"
+                android:maxLength="12"
                 android:inputType="number"
                 android:padding="@dimen/dimens_16dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/text_gray"
                 android:textSize="@dimen/dimens_15sp"
                 android:textStyle="bold"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="Autofill,MissingConstraints" />
-
-            <LinearLayout
-                android:id="@+id/line14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_15dp"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/enter_bin">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/attch_photo"
-                    android:textColor="@color/text_gray"
-                    android:textSize="@dimen/dimens_12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/z"
-                    android:textColor="@color/red" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/image_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_5dp"
-                android:background="@drawable/shape_add_plus"
-                android:gravity="center"
-                android:padding="24.22dp"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/line14">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_plus"
-                    tools:ignore="ContentDescription" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/line15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_15dp"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/image_view">
-
-                <TextView
+                tools:ignore="Autofill" />
+            <TextView
+                android:id="@+id/tv_attach_photo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/attach_photo_human"
                     android:textColor="@color/text_gray"
                     android:textSize="@dimen/dimens_12sp"
+                    android:layout_marginTop="@dimen/dimens_15dp"
                     android:textStyle="bold" />
-
-                <TextView
+                <LinearLayout
+                    android:id="@+id/image_view2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/z"
-                    android:textColor="@color/red" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/image_view2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_5dp"
-                android:background="@drawable/shape_add_plus"
-                android:gravity="center"
-                android:padding="24.22dp"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/line15">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_plus"
-                    tools:ignore="ContentDescription" />
-
+                    android:layout_marginTop="@dimen/dimens_5dp"
+                    android:background="@drawable/shape_add_plus"
+                    android:gravity="center"
+                    android:padding="24.22dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_plus"
+                        tools:ignore="ContentDescription" />
+                </LinearLayout>
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_next"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dimens_33dp"
                 android:layout_marginTop="@dimen/dimens_30dp"
@@ -495,11 +465,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:cornerRadius="@dimen/dimens_15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iin" />
+                app:cornerRadius="@dimen/dimens_15dp" />
         </LinearLayout>
 
     </ScrollView>

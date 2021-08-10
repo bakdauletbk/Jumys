@@ -8,11 +8,10 @@ import kz.smartideagroup.jumys.authorization.client.model.response.SignUpClientR
 import kz.smartideagroup.jumys.authorization.client.model.response.VerificationResponse
 import kz.smartideagroup.jumys.authorization.specialist.model.request.SignUpSpecialistRequest
 import kz.smartideagroup.jumys.client.model.request.apply_claim.RequestWorkUpload
+import kz.smartideagroup.jumys.specialist.model.response.apply_claim.AddressOrderResponse
 import okhttp3.ResponseBody
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface NetworkService {
 
@@ -53,5 +52,9 @@ interface NetworkService {
         @Header("appVer") appVer: String,
         @Body signUpClientRequest: SignUpSpecialistRequest,
     ): Response<SignUpClientResponse>
+    @GET(EndPoints.GET_WORK)
+    suspend fun workList(
+        @Query("appVer") appVer: String
+    ) : AddressOrderResponse
 
 }

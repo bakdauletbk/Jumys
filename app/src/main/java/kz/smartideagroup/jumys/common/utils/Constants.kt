@@ -37,6 +37,12 @@ const val FIVE = 5
 const val SIX = 6
 const val SEVEN = 7
 const val EIGHT = 8
+const val ONE_STR = "1"
+const val TWO_STR = "2"
+const val MAX_DAY = 31
+const val MAX_MONTH = 12
+const val MAX_YEAR_LAST = 1970
+const val MAX_YEAR = 2021
 
 const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
 const val REQUEST_CODE_PERMISSIONS = 10
@@ -53,3 +59,4 @@ const val URI_PLAY_MARKET = "market://details?id="
 const val URI_APP = "https://play.google.com/store/apps/details?id="
 
 const val PUT_PHONE = "PUT_PHONE"
+const val PUT_PHONE_NUMBER = "PUT_PHONE_NUMBER"
