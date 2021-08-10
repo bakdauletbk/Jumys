@@ -6,6 +6,11 @@ import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_sign_in_client.*
+import kotlinx.android.synthetic.main.fragment_sign_in_client.btn_next
+import kotlinx.android.synthetic.main.fragment_sign_in_client.et_phone
+import kotlinx.android.synthetic.main.fragment_sign_in_client.iv_back
+import kotlinx.android.synthetic.main.fragment_sign_in_client.loadingView
+import kotlinx.android.synthetic.main.fragment_sign_in_specialist.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -83,6 +88,10 @@ class SignInClientFragment : BaseFragment(R.layout.fragment_sign_in_client) {
         btn_next.onClick {
             prepareSms()
         }
+        iv_back.onClick {
+            navigateTo(R.id.roleFragment)
+        }
+
     }
 
     private fun prepareSms() {

@@ -3,6 +3,7 @@ package kz.smartideagroup.jumys.authorization.specialist.view
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_sign_in_specialist.*
 import kotlinx.coroutines.CoroutineScope
@@ -14,6 +15,7 @@ import kz.smartideagroup.jumys.authorization.client.model.request.AuthSmsRequest
 import kz.smartideagroup.jumys.common.helpers.TextUtils
 import kz.smartideagroup.jumys.common.helpers.Validators
 import kz.smartideagroup.jumys.common.utils.PUT_PHONE
+import kz.smartideagroup.jumys.common.utils.PUT_PHONE_NUMBER
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
@@ -25,6 +27,9 @@ class SignInSpecialistFragment : BaseFragment(R.layout.fragment_sign_in_speciali
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lets()
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            navigateTo(R.id.roleFragment)
+        }
     }
 
     private fun lets() {
@@ -86,6 +91,9 @@ class SignInSpecialistFragment : BaseFragment(R.layout.fragment_sign_in_speciali
         btn_next.onClick {
             prepareSms()
         }
+        iv_back.onClick {
+            navigateTo(R.id.roleFragment)
+        }
     }
 
     private fun prepareSms() {
@@ -94,6 +102,7 @@ class SignInSpecialistFragment : BaseFragment(R.layout.fragment_sign_in_speciali
             true -> {
                 val authSmsRequest = AuthSmsRequest(TextUtils.textToNumberFormat(phone))
                 bundle.putString(PUT_PHONE, TextUtils.textToNumberFormat(phone))
+                bundle.putString(PUT_PHONE_NUMBER,phone)
                 sendSms(authSmsRequest)
             }
             false -> et_phone.error = getString(R.string.enter_the_number)

@@ -1,5 +1,6 @@
 package kz.smartideagroup.jumys.authorization.specialist.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -12,14 +13,17 @@ import kotlinx.coroutines.launch
 import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.authorization.specialist.viewmodel.SmsCodeSpecialistViewModel
 import kz.smartideagroup.jumys.authorization.client.model.request.VerificationRequest
+import kz.smartideagroup.jumys.authorization.specialist.viewmodel.PhoneNumberTransporter
 import kz.smartideagroup.jumys.common.helpers.Validators
 import kz.smartideagroup.jumys.common.utils.PUT_PHONE
+import kz.smartideagroup.jumys.common.utils.PUT_PHONE_NUMBER
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class SmsCodeSpecialistFragment : BaseFragment(R.layout.fragment_sms_code_specialist) {
 
     private lateinit var viewModel: SmsCodeSpecialistViewModel
+    private lateinit var phoneNumberTransporter: PhoneNumberTransporter
     private val bundle = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +40,15 @@ class SmsCodeSpecialistFragment : BaseFragment(R.layout.fragment_sms_code_specia
 
     private fun lets() {
         initViewModel()
+        setNumber()
         initListeners()
         initObservers()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setNumber() {
+        val phone = arguments?.getString(PUT_PHONE_NUMBER) as String
+        sms_code_number.text = getString(R.string.send_sms_number_phone) + " " + phone
     }
 
     private fun initObservers() {
@@ -77,16 +88,22 @@ class SmsCodeSpecialistFragment : BaseFragment(R.layout.fragment_sms_code_specia
 
     private fun initViewModel() {
         viewModel = ViewModelProvider(this)[SmsCodeSpecialistViewModel::class.java]
+        phoneNumberTransporter = ViewModelProvider(requireActivity())[PhoneNumberTransporter::class.java]
     }
 
     private fun initListeners() {
         btn_next.onClick {
             prepareLogin()
         }
+        iv_close.onClick {
+            navigateTo(R.id.signInSpecialistFragment)
+        }
     }
+
 
     private fun prepareLogin() {
         val phone = arguments?.getString(PUT_PHONE) as String
+        phoneNumberTransporter.setPhone(phone)
         bundle.putString(PUT_PHONE, phone)
         val smsCode = codeInputView.code.toString()
         val verificationRequest = VerificationRequest(phone = phone,
@@ -108,7 +125,6 @@ class SmsCodeSpecialistFragment : BaseFragment(R.layout.fragment_sms_code_specia
     private fun setLoading(loading: Boolean) {
         loadingView.visibility = if (loading) View.VISIBLE else View.GONE
         btn_next.isEnabled = loading
-        codeInputView.isEnabled = loading
     }
 
 }

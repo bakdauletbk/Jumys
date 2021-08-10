@@ -21,6 +21,7 @@ class SecondPageViewModel(application: Application) : AndroidViewModel(applicati
     val isUpdateApp = MutableLiveData<Boolean>()
     val isUnAuthorized = MutableLiveData<Boolean>()
 
+
     suspend fun registration(signUpSpecialistRequest: SignUpSpecialistRequest) {
         viewModelScope.launch {
             try {

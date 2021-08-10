@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/roleFragment">
+    app:startDestination="@id/mapSpecialistFragment">
     <fragment
         android:id="@+id/aboutAppFragment"
         android:name="kz.smartideagroup.jumys.specialist.view.about_app.AboutAppFragment"
@@ -42,6 +42,16 @@
         android:name="kz.smartideagroup.jumys.client.view.claim.DetailPageSpecialistFragment"
         android:label="DetailPageSpecialistFragment"
         tools:layout="@layout/fragment_detail_page_specialist"/>
+    <fragment
+        android:id="@+id/registerSuccessClient"
+        android:name="kz.smartideagroup.jumys.authorization.client.view.RegisterSuccessClientFragment"
+        android:label="RegisterSuccessClientFragment"
+        tools:layout="@layout/fragment_register_client_success"/>
+    <fragment
+        android:id="@+id/registerSuccessSpecialist"
+        android:name="kz.smartideagroup.jumys.authorization.specialist.view.RegisterSuccessSpecialistFragment"
+        android:label="RegisterSuccessFragment"
+        tools:layout="@layout/fragment_register_specialist_success"/>
     <fragment
         android:id="@+id/homeClientFragment"
         android:name="kz.smartideagroup.jumys.client.view.home.HomeClientFragment"
@@ -169,6 +179,7 @@
         android:name="kz.smartideagroup.jumys.authorization.specialist.view.SmsCodeSpecialistFragment"
         android:label="SmsCodeSpecialistFragment"
         tools:layout="@layout/fragment_sms_code_specialist">
+
         <action
             android:id="@+id/action_smsCodeSpecialistFragment_to_registrationSpecialistFragment"
             app:destination="@id/registrationSpecialistFragment" />

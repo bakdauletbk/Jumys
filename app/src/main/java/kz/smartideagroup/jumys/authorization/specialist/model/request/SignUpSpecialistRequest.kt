@@ -20,7 +20,7 @@ data class SignUpSpecialistRequest(
     @SerializedName("type")
     val type: String? = null,
     @SerializedName("certificate_number")
-    val certificate_number: Long? = null,
+    val certificate_number: String? = null,
     @SerializedName("certificate_photo")
     val certificate_photo: String? = null,
     @SerializedName("email")

@@ -6,12 +6,16 @@ import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_registration_client.*
+import kotlinx.android.synthetic.main.fragment_registration_client.btn_next
+import kotlinx.android.synthetic.main.fragment_registration_client.et_email
+import kotlinx.android.synthetic.main.fragment_registration_client.et_name
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kz.smartideagroup.jumys.R
 import kz.smartideagroup.jumys.authorization.client.model.request.SignUpClientRequest
 import kz.smartideagroup.jumys.authorization.client.viewmodel.RegistrationClientViewModel
+import kz.smartideagroup.jumys.common.helpers.validateEmail
 import kz.smartideagroup.jumys.common.utils.PUT_PHONE
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -48,7 +52,7 @@ class RegistrationClientFragment : BaseFragment(R.layout.fragment_registration_c
         })
         viewModel.isSuccess.observe(viewLifecycleOwner, {
             when (it) {
-                true -> navigateTo(R.id.homeClientFragment)
+                true -> navigateTo(R.id.registerSuccessClient)
                 false -> {
                     setLoading(false)
                     errorDialog(getString(R.string.error_failed_connection_to_server))
@@ -94,10 +98,7 @@ class RegistrationClientFragment : BaseFragment(R.layout.fragment_registration_c
             false
         }
 
-        isValidateEmail = if (email.isNotEmpty()) true else {
-            et_email.error = getString(R.string.enter_your_email)
-            false
-        }
+        isValidateEmail = et_email.validateEmail(email, getString(R.string.enter_your_email))
 
         val signUpManagerRequest =
             SignUpClientRequest(phone = phone, ftoken = "sad", full_name = name, email = email)
