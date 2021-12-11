@@ -25,6 +25,7 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
         this.callback = callback
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addList(mediaList: List<String>) {
         this.mediaList.clear()
         notifyDataSetChanged()

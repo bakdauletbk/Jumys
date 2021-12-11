@@ -3,11 +3,52 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/drawable/round_white_foreground.xml" value="0.2703125" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/drawable/shape_advice.xml" value="0.2703125" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/drawable/shape_white_corner_radius8dp.xml" value="0.2703125" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/drawable/shape_white_radius18dp.xml" value="0.2703125" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/drawable/shape_white_radius_15dp.xml" value="0.2703125" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/activity_foundation.xml" value="0.275" />
         <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/alert_dialog_preview_media.xml" value="0.1598731884057971" />
         <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/first_page_register.xml" value="0.264" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_about_app.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_camera.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_city_specialist.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_claim_client.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_claim_specialist.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_detail_page_specialist.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_home_client.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_home_specialist.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_map_specialist.xml" value="0.264" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_on_boarding.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_order_detail_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_order_list.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/order_bottom_sheet.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_placing_order.xml" value="0.152" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_profile_client.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_profile_specialist.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_questionnaire.xml" value="0.275" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_register_client_success.xml" value="0.275" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_registration_client.xml" value="0.275" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_registration_specialist.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_request_call_specialist.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_sign_in_client.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_sms_code_client.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_sms_code_specialist.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_splash.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/fragment_support_client.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/item_advice.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/item_banner.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/item_category.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/item_claim.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/item_claim_specialists.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/item_history.xml" value="0.275" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/item_media.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/item_order_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/item_recommended_specialists.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/layout_profile_client_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/layout_settings_client_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/layout/order_bottom_sheet.xml" value="0.264" />
+        <entry key="..\:/Users/Bakdaulet/AndroidStudioProjects/naimi-android/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

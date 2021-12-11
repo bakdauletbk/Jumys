@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/mapSpecialistFragment">
+    app:startDestination="@id/homeSpecialistFragment">
     <fragment
         android:id="@+id/aboutAppFragment"
         android:name="kz.smartideagroup.jumys.specialist.view.about_app.AboutAppFragment"

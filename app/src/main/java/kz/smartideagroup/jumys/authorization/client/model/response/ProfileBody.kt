@@ -12,7 +12,7 @@ data class ProfileBody(
     @SerializedName("rating")
     val rating: String? = null,
     @SerializedName("status")
-    val status: Int? = null,
+    val status: String? = null,
     @SerializedName("created_at")
     val created_at: String? = null,
     @SerializedName("updated_at")

@@ -121,6 +121,6 @@ class RegistrationClientFragment : BaseFragment(R.layout.fragment_registration_c
 
     private fun setLoading(loading: Boolean) {
         loadingView.visibility = if (loading) View.VISIBLE else View.GONE
-        btn_next.isEnabled = loading
+        btn_next.isEnabled = !loading
     }
 }

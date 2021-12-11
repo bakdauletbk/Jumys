@@ -1,6 +1,7 @@
 package kz.smartideagroup.jumys.authorization.client.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -24,6 +25,7 @@ class RegistrationClientViewModel(application: Application) : AndroidViewModel(a
         viewModelScope.launch {
             try {
                 val response = repository.registration(signUpClientRequest)
+                Log.d("exception response", response.toString())
                 when (response.code()) {
                     RESPONSE_SUCCESS -> {
                         isSuccess.postValue(true)
@@ -34,6 +36,7 @@ class RegistrationClientViewModel(application: Application) : AndroidViewModel(a
                     else -> isSuccess.postValue(false)
                 }
             } catch (e: Exception) {
+                Log.e("exception", e.toString())
                 isError.postValue("")
             }
         }

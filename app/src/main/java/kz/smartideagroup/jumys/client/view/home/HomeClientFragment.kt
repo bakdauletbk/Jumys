@@ -102,7 +102,7 @@ class HomeClientFragment : BaseFragment(R.layout.fragment_home_client) {
 
     private fun initListeners() {
         btn_apply.onClick {
-            navigateTo(R.id.cameraFragment)
+            navigateTo(R.id.placingOrderFragment)
         }
     }
 

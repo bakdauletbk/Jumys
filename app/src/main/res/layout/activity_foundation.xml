@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:backgroundTint="@color/white"
-        android:visibility="gone"
+        android:visibility="visible"
         app:fabAlignmentMode="center"
         app:fabCradleRoundedCornerRadius="10dp">
 

@@ -1,11 +1,17 @@
 package kz.smartideagroup.jumys.authorization.client.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_sms_code_client.*
+import kotlinx.android.synthetic.main.fragment_sms_code_client.btn_next
+import kotlinx.android.synthetic.main.fragment_sms_code_client.codeInputView
+import kotlinx.android.synthetic.main.fragment_sms_code_client.iv_close
+import kotlinx.android.synthetic.main.fragment_sms_code_client.loadingView
+import kotlinx.android.synthetic.main.fragment_sms_code_specialist.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,6 +20,7 @@ import kz.smartideagroup.jumys.authorization.client.model.request.VerificationRe
 import kz.smartideagroup.jumys.authorization.client.viewmodel.SmsCodeClientViewModel
 import kz.smartideagroup.jumys.common.helpers.Validators
 import kz.smartideagroup.jumys.common.utils.PUT_PHONE
+import kz.smartideagroup.jumys.common.utils.PUT_PHONE_NUMBER
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
@@ -36,8 +43,15 @@ class SmsCodeClientFragment : BaseFragment(R.layout.fragment_sms_code_client) {
 
     private fun lets() {
         initViewModel()
+        setNumber()
         initListeners()
         initObservers()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setNumber() {
+        val phone = arguments?.getString(PUT_PHONE_NUMBER) as String
+        text_view.text = getString(R.string.send_sms_number_phone) + " " + phone
     }
 
     private fun initObservers() {

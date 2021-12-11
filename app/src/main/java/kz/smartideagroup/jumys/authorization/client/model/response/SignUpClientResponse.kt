@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class SignUpClientResponse(
     @SerializedName("user")
-    val user: UserBody,
+    val user: UserBody
 )

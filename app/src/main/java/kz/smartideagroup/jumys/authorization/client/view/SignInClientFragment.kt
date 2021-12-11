@@ -20,6 +20,7 @@ import kz.smartideagroup.jumys.authorization.client.viewmodel.SignInClientViewMo
 import kz.smartideagroup.jumys.common.helpers.TextUtils
 import kz.smartideagroup.jumys.common.helpers.Validators
 import kz.smartideagroup.jumys.common.utils.PUT_PHONE
+import kz.smartideagroup.jumys.common.utils.PUT_PHONE_NUMBER
 import kz.smartideagroup.jumys.common.views.BaseFragment
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
@@ -100,6 +101,7 @@ class SignInClientFragment : BaseFragment(R.layout.fragment_sign_in_client) {
             true -> {
                 val authSmsRequest = AuthSmsRequest(TextUtils.textToNumberFormat(phone))
                 bundle.putString(PUT_PHONE, TextUtils.textToNumberFormat(phone))
+                bundle.putString(PUT_PHONE_NUMBER,phone)
                 sendSms(authSmsRequest)
             }
             false -> et_phone.error = getString(R.string.enter_the_number)

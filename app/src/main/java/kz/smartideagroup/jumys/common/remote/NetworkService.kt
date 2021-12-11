@@ -56,5 +56,9 @@ interface NetworkService {
     suspend fun workList(
         @Query("appVer") appVer: String
     ) : AddressOrderResponse
+    @GET(EndPoints.GET_STORIES)
+    suspend fun storyList(
+        @Query("appVer") appVer: String
+    )
 
 }
